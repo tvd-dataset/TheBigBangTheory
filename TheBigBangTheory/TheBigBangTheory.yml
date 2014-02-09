@@ -43,7 +43,7 @@ www:
             - {season: 1, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/Fuzzy_Boots_Corollary"}
             - {season: 1, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/Luminous_Fish_Effect"}
             - {season: 1, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/Hamburger_Postulate"}
-	    - {season: 1, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/Middle-Earth_Paradigm"}
+            - {season: 1, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/Middle-Earth_Paradigm"}
 
     manual_transcript:
         source: "bigbangtrans.wordpress.com"
@@ -53,5 +53,5 @@ www:
             - {season: 1, episode: 3, url: "http://bigbangtrans.wordpress.com/series-1-episode-3-the-fuzzy-boots-corollary/"}
             - {season: 1, episode: 4, url: "http://bigbangtrans.wordpress.com/series-1-episode-4-the-luminous-fish-effect/"}
             - {season: 1, episode: 5, url: "http://bigbangtrans.wordpress.com/series-1-episode-5-the-hamburger-postulate/"}
-	    - {season: 1, episode: 6, url: "http://bigbangtrans.wordpress.com/series-1-episode-6-the-middle-earth-paradigm/"}
+            - {season: 1, episode: 6, url: "http://bigbangtrans.wordpress.com/series-1-episode-6-the-middle-earth-paradigm/"}
 
