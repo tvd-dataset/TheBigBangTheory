@@ -26,7 +26,7 @@
 # SOFTWARE.
 #
 
-# Comments (AR):
+# Questions (resolved) (AR):
 # Q1: Why not keep scene/location description in addition to event info? Note that this may be specific to TBBT. Done.
 # Q2: Why not 'event' and 'location', instead of just 'speech'? Done.
 # Q3: Continuous graph? Done.
@@ -125,32 +125,48 @@ class TheBigBangTheory(SeriesPlugin):
 	r = r.split('\n')
 
 	g = nx.MultiDiGraph(uri=str(episode), source=source)
+	t_episode_start = T()
+	t_episode_stop = T()
+	t_location_prev = t_episode_start
+	t_event_prev = None
 
 	for line in r:
 		if re.search('\A[ \t\n\r]*\Z', line): # Empty line.
 			continue
 
-		if re.match('\A\s*[Ss]cene\s*[\.:]', line): # Scene description. 
+		if re.match('\A\s*[Ss]cene\s*[\.:]', line): # Scene/location description. 
+			if t_event_prev:
+					g.add_edge(t_event_prev, t_location_prev)
+
+			location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+			t_location_start = T()
+			g.add_edge(t_location_prev, t_location_start)
+			t_location_stop = T()
+			g.add_edge(t_location_start, t_location_stop, location=location_)
+			t_location_prev = t_location_stop
+			t_event_prev = t_location_start
 			continue
 
 		if re.search('\A[ \t]*Written by', line, re.IGNORECASE) or re.search('\A[ \t]*Teleplay:', line, re.IGNORECASE) or re.search('\A[ \t]*Story:', line, re.IGNORECASE) or re.search('\A[ \t]*Like this:', line, re.IGNORECASE):
 			break
 		
-		speaker = re.match('\A\s*[^:\.]+\s*:', line)
-		if speaker == None:
+		speaker_ = re.match('\A\s*[^:\.]+\s*:', line)
+		if speaker_ == None:
 			continue # Comments e.g. '(They begin to fill out forms.)
 
-		speaker = speaker.group()
-		speaker = re.sub('\A\s*','', speaker)
+		speaker_ = speaker_.group()
+		speaker_ = re.sub('\A\s*','', speaker)
 		#speaker = re.sub('\s*[\.:]','', speaker).lower()
-		speaker = re.sub('\s*\([^)]+\)\s*','', speaker)
+		speaker_ = re.sub('\s*\([^)]+\)\s*','', speaker_)
 		#if speaker in names_map:
 		#	speaker = names_map[speaker]
 		speech_ = re.sub('\A\s*[^:\.]+\s*:\s*','', line)
 
-                t1 = T()
-                t2 = T()
-                g.add_edge(t1, t2, spk=speaker, speech=speech_)
+                t_event_start = T()
+                t_event_stop = T()
+                g.add_edge(t_event_prev, t_event_start)
+                g.add_edge(t_event_start, t_event_stop, speaker=speaker_, speech=speech_)
+                t_event_prev = t_event_stop
 
         return g
 
