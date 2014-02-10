@@ -68,10 +68,13 @@ class TheBigBangTheory(SeriesPlugin):
  	r = re.sub('<[^>]+>', '', r)
 	r = r.split('\n')
 
+	t_start = T()
+	t_stop = T() 
+
 	text = [] # Text for episode outline.
 	start = 0
 	for line in r:
-		if re.search('\A[ \t\n\r]*\Z', line):
+		if re.search('\A[ \t\n\r]*\Z', line): # Empty line.
 			continue
 		if re.search('\A[ \t]*episode outline[ \t]*\Z', line, re.IGNORECASE):
 			start = 1
@@ -79,8 +82,11 @@ class TheBigBangTheory(SeriesPlugin):
 		if start == 1:
 			if re.search('\A[ \t]*resources[ \t]*\Z', line, re.IGNORECASE) or re.search('\A\[*[0-9]*\]*timeline[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*commentary and trivia[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*trivia[ \t]*\Z', line, re.IGNORECASE):
 				break
-			if not re.search('\A[ \t]*[IVXLCM]+[\.:]+', line): # Remove location description.
-				text.append(' '.join(line.split())) # Keep just events. Q. Why not keep location info?
+			if re.search('\A[ \t]*[IVXLCM]+[\.:]+', line): # Location description.
+				location = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+			
+			else:
+				event = ' '.join(line.split()) # Keep just events. Q. Why not keep location info?
 
         g = nx.MultiDiGraph(uri=str(episode), source=source)
 	nEvents = len(text)
