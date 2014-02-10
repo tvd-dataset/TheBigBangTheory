@@ -27,9 +27,9 @@
 #
 
 # Comments (AR):
-# Q1: Why not keep scene/location description in addition to event info? Note that this may be specific to TBBT.
-# Q2: Why not 'event' and 'location', instead of just 'speech'?
-# Q3: Continuous graph?
+# Q1: Why not keep scene/location description in addition to event info? Note that this may be specific to TBBT. Done.
+# Q2: Why not 'event' and 'location', instead of just 'speech'? Done.
+# Q3: Continuous graph? Done.
 
 from tvd.series.plugin import SeriesPlugin
 import re
@@ -68,33 +68,47 @@ class TheBigBangTheory(SeriesPlugin):
  	r = re.sub('<[^>]+>', '', r)
 	r = r.split('\n')
 
-	t_start = T()
-	t_stop = T() 
+	g = nx.MultiDiGraph(uri=str(episode), source=source)
 
-	text = [] # Text for episode outline.
+	t_episode_start = T()
+	t_episode_stop = T() 
+	t_location_prev = t_episode_start
+	t_event_prev = None
+
 	start = 0
 	for line in r:
 		if re.search('\A[ \t\n\r]*\Z', line): # Empty line.
 			continue
-		if re.search('\A[ \t]*episode outline[ \t]*\Z', line, re.IGNORECASE):
+		if re.search('\A[ \t]*episode outline[ \t]*\Z', line, re.IGNORECASE): # Start of episode outline section.
 			start = 1
 			continue
 		if start == 1:
 			if re.search('\A[ \t]*resources[ \t]*\Z', line, re.IGNORECASE) or re.search('\A\[*[0-9]*\]*timeline[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*commentary and trivia[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*trivia[ \t]*\Z', line, re.IGNORECASE):
 				break
-			if re.search('\A[ \t]*[IVXLCM]+[\.:]+', line): # Location description.
-				location = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+			if re.search('\A[ \t]*[IVXLCM]+[\.:]+', line): # New location description.
 			
-			else:
-				event = ' '.join(line.split()) # Keep just events. Q. Why not keep location info?
+				# Finish the edge for previous location section.
+				if t_event_prev:
+					g.add_edge(t_event_prev, t_location_prev)
 
-        g = nx.MultiDiGraph(uri=str(episode), source=source)
-	nEvents = len(text)
-        for eNo in xrange(nEvents):
-                t1 = T()
-                t2 = T()
-		event = text[eNo]
-                g.add_edge(t1, t2, scene="Scene_"+str(eNo), speech=event) # Why not 'event' instead of 'speech'?
+				location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+				t_location_start = T()
+				g.add_edge(t_location_prev, t_location_start)
+				t_location_stop = T()
+				g.add_edge(t_location_start, t_location_stop, location=location_)
+				t_location_prev = t_location_stop
+				t_event_prev = t_location_start
+				
+			else:
+				event_ = ' '.join(line.split()) 
+				t_event_start = T()
+				t_event_stop = T()
+				g.add_edge(t_event_prev, t_event_start)
+				g.add_edge(t_event_start, t_event_stop, event = event_)
+				t_event_prev = t_event_stop
+
+        
+	g.add_edge(t_location_prev, t_episode_stop)
 
         return g
 
