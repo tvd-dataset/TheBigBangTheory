@@ -30,7 +30,7 @@ name: "The Big Bang Theory"
 language: "en"
 
 # number of episodes per season
-episodes: [6]
+episodes: [17, 23, 23, 24, 24]
 
 # resources that can be downloaded from the web
 www:
@@ -38,13 +38,118 @@ www:
     outline:
         source: "wiki.the-big-bang-theory.com"
         url:
-            - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101"}
-            - {season: 1, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/Big_Bran_Hypothesis"}
-            - {season: 1, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/Fuzzy_Boots_Corollary"}
-            - {season: 1, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/Luminous_Fish_Effect"}
-            - {season: 1, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/Hamburger_Postulate"}
-            - {season: 1, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/Middle-Earth_Paradigm"}
-
+            - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101/"}
+            - {season: 1, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0102/"}
+            - {season: 1, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/0103/"}
+            - {season: 1, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/0104/"}
+            - {season: 1, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/0105/"}
+            - {season: 1, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/0106/"}
+            - {season: 1, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0107/"}
+            - {season: 1, episode: 8, url: "http://wiki.the-big-bang-theory.com/wiki/0108/"}
+            - {season: 1, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0109/"}
+            - {season: 1, episode: 10, url: "http://wiki.the-big-bang-theory.com/wiki/0110/"}
+            - {season: 1, episode: 11, url: "http://wiki.the-big-bang-theory.com/wiki/0111/"}
+            - {season: 1, episode: 12, url: "http://wiki.the-big-bang-theory.com/wiki/0112/"}
+            - {season: 1, episode: 13, url: "http://wiki.the-big-bang-theory.com/wiki/0113/"}
+            - {season: 1, episode: 14, url: "http://wiki.the-big-bang-theory.com/wiki/0114/"}
+            - {season: 1, episode: 15, url: "http://wiki.the-big-bang-theory.com/wiki/0115/"}
+            - {season: 1, episode: 16, url: "http://wiki.the-big-bang-theory.com/wiki/0116/"}
+            - {season: 1, episode: 17, url: "http://wiki.the-big-bang-theory.com/wiki/0117/"}
+            - {season: 2, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0201/"}
+            - {season: 2, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0202/"}
+            - {season: 2, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/0203/"}
+            - {season: 2, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/0204/"}
+            - {season: 2, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/0205/"}
+            - {season: 2, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/0206/"}
+            - {season: 2, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0207/"}
+            - {season: 2, episode: 8, url: "http://wiki.the-big-bang-theory.com/wiki/0208/"}
+            - {season: 2, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0209/"}
+            - {season: 2, episode: 10, url: "http://wiki.the-big-bang-theory.com/wiki/0210/"}
+            - {season: 2, episode: 11, url: "http://wiki.the-big-bang-theory.com/wiki/0211/"}
+            - {season: 2, episode: 12, url: "http://wiki.the-big-bang-theory.com/wiki/0212/"}
+            - {season: 2, episode: 13, url: "http://wiki.the-big-bang-theory.com/wiki/0213/"}
+            - {season: 2, episode: 14, url: "http://wiki.the-big-bang-theory.com/wiki/0214/"}
+            - {season: 2, episode: 15, url: "http://wiki.the-big-bang-theory.com/wiki/0215/"}
+            - {season: 2, episode: 16, url: "http://wiki.the-big-bang-theory.com/wiki/0216/"}
+            - {season: 2, episode: 17, url: "http://wiki.the-big-bang-theory.com/wiki/0217/"}
+            - {season: 2, episode: 18, url: "http://wiki.the-big-bang-theory.com/wiki/0218/"}
+            - {season: 2, episode: 19, url: "http://wiki.the-big-bang-theory.com/wiki/0219/"}
+            - {season: 2, episode: 20, url: "http://wiki.the-big-bang-theory.com/wiki/0220/"}
+            - {season: 2, episode: 21, url: "http://wiki.the-big-bang-theory.com/wiki/0221/"}
+            - {season: 2, episode: 22, url: "http://wiki.the-big-bang-theory.com/wiki/0222/"}
+            - {season: 2, episode: 23, url: "http://wiki.the-big-bang-theory.com/wiki/0223/"}
+            - {season: 3, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0301/"}
+            - {season: 3, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0302/"}
+            - {season: 3, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/0303/"}
+            - {season: 3, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/0304/"}
+            - {season: 3, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/0305/"}
+            - {season: 3, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/0306/"}
+            - {season: 3, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0307/"}
+            - {season: 3, episode: 8, url: "http://wiki.the-big-bang-theory.com/wiki/0308/"}
+            - {season: 3, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0309/"}
+            - {season: 3, episode: 10, url: "http://wiki.the-big-bang-theory.com/wiki/0310/"}
+            - {season: 3, episode: 11, url: "http://wiki.the-big-bang-theory.com/wiki/0311/"}
+            - {season: 3, episode: 12, url: "http://wiki.the-big-bang-theory.com/wiki/0312/"}
+            - {season: 3, episode: 13, url: "http://wiki.the-big-bang-theory.com/wiki/0313/"}
+            - {season: 3, episode: 14, url: "http://wiki.the-big-bang-theory.com/wiki/0314/"}
+            - {season: 3, episode: 15, url: "http://wiki.the-big-bang-theory.com/wiki/0315/"}
+            - {season: 3, episode: 16, url: "http://wiki.the-big-bang-theory.com/wiki/0316/"}
+            - {season: 3, episode: 17, url: "http://wiki.the-big-bang-theory.com/wiki/0317/"}
+            - {season: 3, episode: 18, url: "http://wiki.the-big-bang-theory.com/wiki/0318/"}
+            - {season: 3, episode: 19, url: "http://wiki.the-big-bang-theory.com/wiki/0319/"}
+            - {season: 3, episode: 20, url: "http://wiki.the-big-bang-theory.com/wiki/0320/"}
+            - {season: 3, episode: 21, url: "http://wiki.the-big-bang-theory.com/wiki/0321/"}
+            - {season: 3, episode: 22, url: "http://wiki.the-big-bang-theory.com/wiki/0322/"}
+            - {season: 3, episode: 23, url: "http://wiki.the-big-bang-theory.com/wiki/0323/"}
+            - {season: 4, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0401/"}
+            - {season: 4, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0402/"}
+            - {season: 4, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/0403/"}
+            - {season: 4, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/0404/"}
+            - {season: 4, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/0405/"}
+            - {season: 4, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/0406/"}
+            - {season: 4, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0407/"}
+            - {season: 4, episode: 8, url: "http://wiki.the-big-bang-theory.com/wiki/0408/"}
+            - {season: 4, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0409/"}
+            - {season: 4, episode: 10, url: "http://wiki.the-big-bang-theory.com/wiki/0410/"}
+            - {season: 4, episode: 11, url: "http://wiki.the-big-bang-theory.com/wiki/0411/"}
+            - {season: 4, episode: 12, url: "http://wiki.the-big-bang-theory.com/wiki/0412/"}
+            - {season: 4, episode: 13, url: "http://wiki.the-big-bang-theory.com/wiki/0413/"}
+            - {season: 4, episode: 14, url: "http://wiki.the-big-bang-theory.com/wiki/0414/"}
+            - {season: 4, episode: 15, url: "http://wiki.the-big-bang-theory.com/wiki/0415/"}
+            - {season: 4, episode: 16, url: "http://wiki.the-big-bang-theory.com/wiki/0416/"}
+            - {season: 4, episode: 17, url: "http://wiki.the-big-bang-theory.com/wiki/0417/"}
+            - {season: 4, episode: 18, url: "http://wiki.the-big-bang-theory.com/wiki/0418/"}
+            - {season: 4, episode: 19, url: "http://wiki.the-big-bang-theory.com/wiki/0419/"}
+            - {season: 4, episode: 20, url: "http://wiki.the-big-bang-theory.com/wiki/0420/"}
+            - {season: 4, episode: 21, url: "http://wiki.the-big-bang-theory.com/wiki/0421/"}
+            - {season: 4, episode: 22, url: "http://wiki.the-big-bang-theory.com/wiki/0422/"}
+            - {season: 4, episode: 23, url: "http://wiki.the-big-bang-theory.com/wiki/0423/"}
+            - {season: 4, episode: 24, url: "http://wiki.the-big-bang-theory.com/wiki/0424/"}
+            - {season: 5, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0501/"}
+            - {season: 5, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0502/"}
+            - {season: 5, episode: 3, url: "http://wiki.the-big-bang-theory.com/wiki/0503/"}
+            - {season: 5, episode: 4, url: "http://wiki.the-big-bang-theory.com/wiki/0504/"}
+            - {season: 5, episode: 5, url: "http://wiki.the-big-bang-theory.com/wiki/0505/"}
+            - {season: 5, episode: 6, url: "http://wiki.the-big-bang-theory.com/wiki/0506/"}
+            - {season: 5, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0507/"}
+            - {season: 5, episode: 8, url: "http://wiki.the-big-bang-theory.com/wiki/0508/"}
+            - {season: 5, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0509/"}
+            - {season: 5, episode: 10, url: "http://wiki.the-big-bang-theory.com/wiki/0510/"}
+            - {season: 5, episode: 11, url: "http://wiki.the-big-bang-theory.com/wiki/0511/"}
+            - {season: 5, episode: 12, url: "http://wiki.the-big-bang-theory.com/wiki/0512/"}
+            - {season: 5, episode: 13, url: "http://wiki.the-big-bang-theory.com/wiki/0513/"}
+            - {season: 5, episode: 14, url: "http://wiki.the-big-bang-theory.com/wiki/0514/"}
+            - {season: 5, episode: 15, url: "http://wiki.the-big-bang-theory.com/wiki/0515/"}
+            - {season: 5, episode: 16, url: "http://wiki.the-big-bang-theory.com/wiki/0516/"}
+            - {season: 5, episode: 17, url: "http://wiki.the-big-bang-theory.com/wiki/0517/"}
+            - {season: 5, episode: 18, url: "http://wiki.the-big-bang-theory.com/wiki/0518/"}
+            - {season: 5, episode: 19, url: "http://wiki.the-big-bang-theory.com/wiki/0519/"}
+            - {season: 5, episode: 20, url: "http://wiki.the-big-bang-theory.com/wiki/0520/"}
+            - {season: 5, episode: 21, url: "http://wiki.the-big-bang-theory.com/wiki/0521/"}
+            - {season: 5, episode: 22, url: "http://wiki.the-big-bang-theory.com/wiki/0522/"}
+            - {season: 5, episode: 23, url: "http://wiki.the-big-bang-theory.com/wiki/0523/"}
+            - {season: 5, episode: 24, url: "http://wiki.the-big-bang-theory.com/wiki/0524/"}
+            
     manual_transcript:
         source: "bigbangtrans.wordpress.com"
         url:
