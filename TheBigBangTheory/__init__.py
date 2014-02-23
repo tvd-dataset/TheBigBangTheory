@@ -4,8 +4,8 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2014 Anindya ROY (http://roy-a.github.io/)
-# Copyright (c) 2013 Hervé BREDIN (http://herve.niderb.fr/)
+# Copyright (c) 2014- Anindya ROY (http://roy-a.github.io/)
+# Copyright (c) 2013- Hervé BREDIN (http://herve.niderb.fr/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,6 @@
 # SOFTWARE.
 #
 
-# Questions (resolved) (AR):
-# Q1: Why not keep scene/location description in addition to event info? Note that this may be specific to TBBT. Done.
-# Q2: Why not 'event' and 'location', instead of just 'speech'? Done.
-# Q3: Continuous graph? Done.
 
 from tvd.series.plugin import SeriesPlugin
 import re
