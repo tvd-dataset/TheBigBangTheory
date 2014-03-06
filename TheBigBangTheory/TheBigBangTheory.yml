@@ -2,7 +2,7 @@
 # The MIT License (MIT)
 #
 # Copyright (c) 2013- Hervé BREDIN (http://herve.niderb.fr/)
-# Copyright (c) 2013- Anindya ROY (http://roy-a.github.io/)
+# Copyright (c) 2014 Anindya ROY (http://roy-a.github.io/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -262,3 +262,41 @@ www:
             - {season: 5, episode: 22, url: "http://bigbangtrans.wordpress.com//series-5-episode-22-the-stag-convergence/"}
             - {season: 5, episode: 23, url: "http://bigbangtrans.wordpress.com//series-5-episode-23-the-launch-acceleration/"}
             - {season: 5, episode: 24, url: "http://bigbangtrans.wordpress.com//series-5-episode-24-the-countdown-reflection/"}
+            - {season: 6, episode: 1, url: "http://bigbangtrans.wordpress.com//series-6-episode-01-the-date-night-variable/"}
+            - {season: 6, episode: 2, url: "http://bigbangtrans.wordpress.com//series-6-episode-02-the-decoupling-fluctuation/"}
+            - {season: 6, episode: 3, url: "http://bigbangtrans.wordpress.com//series-6-episode-03-the-higgs-boson-observation/"}
+            - {season: 6, episode: 4, url: "http://bigbangtrans.wordpress.com//series-6-episode-04-the-re-entry-minimization/"}
+            - {season: 6, episode: 5, url: "http://bigbangtrans.wordpress.com//series-6-episode-05-the-holographic-excitation/"}
+            - {season: 6, episode: 6, url: "http://bigbangtrans.wordpress.com//series-6-episode-06-the-extract-obliteration/"}
+            - {season: 6, episode: 7, url: "http://bigbangtrans.wordpress.com//series-6-episode-07-the-habitation-configuration/"}
+            - {season: 6, episode: 8, url: "http://bigbangtrans.wordpress.com//series-6-episode-08-the-43-peculiarity/"}
+            - {season: 6, episode: 9, url: "http://bigbangtrans.wordpress.com//series-6-episode-09-the-parking-spot-escalation/"}
+            - {season: 6, episode: 10, url: "http://bigbangtrans.wordpress.com//series-6-episode-10-the-fish-guts-displacement/"}
+            - {season: 6, episode: 11, url: "http://bigbangtrans.wordpress.com//series-6-episode-11-the-santa-simulation/"}
+            - {season: 6, episode: 12, url: "http://bigbangtrans.wordpress.com//series-6-episode-12-the-egg-salad-equivalency/"}
+            - {season: 6, episode: 13, url: "http://bigbangtrans.wordpress.com//series-6-episode-13-the-bakersfield-expedition/"}
+            - {season: 6, episode: 15, url: "http://bigbangtrans.wordpress.com//series-6-episode-15-the-spoiler-alert-segmentation/"}
+            - {season: 6, episode: 16, url: "http://bigbangtrans.wordpress.com//series-6-episode-16-the-tangible-affection-proof/"}
+            - {season: 6, episode: 17, url: "http://bigbangtrans.wordpress.com//series-6-episode-17-the-monster-isolation/"}
+            - {season: 6, episode: 18, url: "http://bigbangtrans.wordpress.com//series-6-episode-18-the-contractual-obligation-implementation/"}
+            - {season: 6, episode: 19, url: "http://bigbangtrans.wordpress.com//series-6-episode-19-the-closet-reconfiguration/"}
+            - {season: 6, episode: 20, url: "http://bigbangtrans.wordpress.com//series-6-episode-20-the-tenure-turbulence/"}
+            - {season: 6, episode: 21, url: "http://bigbangtrans.wordpress.com//series-6-episode-21-the-closure-alternative/"}
+            - {season: 6, episode: 22, url: "http://bigbangtrans.wordpress.com//series-6-episode-22-the-proton-resurgence/"}
+            - {season: 6, episode: 23, url: "http://bigbangtrans.wordpress.com//series-06-episode-23-the-love-spell-potential/"}
+            - {season: 6, episode: 24, url: "http://bigbangtrans.wordpress.com//series-06-episode-24-the-bon-voyage-reaction/"}
+            - {season: 7, episode: 1, url: "http://bigbangtrans.wordpress.com//series-7-episode-01-the-hofstadter-insufficiency/"}
+            - {season: 7, episode: 2, url: "http://bigbangtrans.wordpress.com//series-7-episode-02-the-deception-verification/"}
+            - {season: 7, episode: 3, url: "http://bigbangtrans.wordpress.com//series-7-episode-03-the-scavenger-vortex/"}
+            - {season: 7, episode: 4, url: "http://bigbangtrans.wordpress.com//series-7-episode-04-the-raiders-minimization/"}
+            - {season: 7, episode: 5, url: "http://bigbangtrans.wordpress.com//series-7-episode-05-the-workplace-proximity/"}
+            - {season: 7, episode: 6, url: "http://bigbangtrans.wordpress.com//series-7-episode-06-the-romance-resonance/"}
+            - {season: 7, episode: 7, url: "http://bigbangtrans.wordpress.com//series-7-episode-07-the-proton-displacement/"}
+            - {season: 7, episode: 8, url: "http://bigbangtrans.wordpress.com//series-7-episode-08-the-itchy-brain-simulation/"}
+            - {season: 7, episode: 9, url: "http://bigbangtrans.wordpress.com//series-7-episode-09-the-thanksgiving-decoupling/"}
+            - {season: 7, episode: 10, url: "http://bigbangtrans.wordpress.com//series-7-episode-10-the-discovery-dissipation/"}
+            - {season: 7, episode: 11, url: "http://bigbangtrans.wordpress.com//series-7-episode-11-the-cooper-extraction/"}
+            - {season: 7, episode: 12, url: "http://bigbangtrans.wordpress.com//series-7-episode-12-the-hesitation-ramification/"}
+            - {season: 7, episode: 13, url: "http://bigbangtrans.wordpress.com//series-7-episode-13-the-occupation-recalibration/"}
+            - {season: 7, episode: 14, url: "http://bigbangtrans.wordpress.com//series-7-episode-14-the-convention-conundrum/"}
+            
