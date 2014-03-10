@@ -4,8 +4,8 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2014- Anindya ROY (http://roy-a.github.io/)
-# Copyright (c) 2013- Hervé BREDIN (http://herve.niderb.fr/)
+# Copyright (c) 2014 Anindya ROY (http://roy-a.github.io/)
+# Copyright (c) 2013-2014 Hervé BREDIN (http://herve.niderb.fr/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -30,143 +30,186 @@
 from tvd.series.plugin import SeriesPlugin
 import re
 import urllib3
-from tvd.common.graph import T
-import networkx as nx
+from tvd import TFloating, TStart, TEnd, AnnotationGraph
 
 
 class TheBigBangTheory(SeriesPlugin):
 
-    
-
-    def outline(self, url, source=None, episode=None):
+    def outline(self, url=None, episode=None, **kwargs):
         """
         Parameters
         ----------
         url : str
             URL where resource is available
-        source : str, optional
-            Textual description of the source of the resource
         episode : Episode, optional
             Episode for which resource should be downloaded
             Useful in case a same URL contains resources for multiple episodes.
 
         Returns
         -------
-        g : AnnotationGraph
+        G : AnnotationGraph
         """
 
         http = urllib3.PoolManager()
-	r = http.request('GET', url)
-	r = r.data
-	r = re.sub('<script[^<]+</script>', '', r)
- 	r = re.sub('<style[^<]+</style>', '', r)
-	r = re.sub('<div[^<]+</div>', '', r)
- 	r = re.sub('<[^>]+>', '', r)
-	r = r.split('\n')
+        r = http.request('GET', url)
+        r = r.data
+        r = re.sub('<script[^<]+</script>', '', r)
+        r = re.sub('<style[^<]+</style>', '', r)
+        r = re.sub('<div[^<]+</div>', '', r)
+        r = re.sub('<[^>]+>', '', r)
+        r = r.split('\n')
 
-	g = nx.MultiDiGraph(uri=str(episode), source=source)
+        G = AnnotationGraph(episode=episode)
 
-	t_episode_start = T()
-	t_episode_stop = T() 
-	t_location_prev = t_episode_start
-	t_event_prev = None
+        t_episode_start = TStart()
+        t_episode_stop = TEnd()
+        t_location_prev = t_episode_start
+        t_event_prev = None
 
-	start = 0
-	for line in r:
-		if re.search('\A[ \t\n\r]*\Z', line): # Empty line.
-			continue
-		if re.search('\A[ \t]*episode outline[ \t]*\Z', line, re.IGNORECASE): # Start of episode outline section.
-			start = 1
-			continue
-		if start == 1:
-			if re.search('\A[ \t]*resources[ \t]*\Z', line, re.IGNORECASE) or re.search('\A\[*[0-9]*\]*timeline[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*commentary and trivia[ \t]*\Z', line, re.IGNORECASE) or re.search('\A[ \t]*trivia[ \t]*\Z', line, re.IGNORECASE):
-				break
-			if re.search('\A[ \t]*[IVXLCM]+[\.:]+', line): # New location description.
-			
-				# Finish the edge for previous location section.
-				if t_event_prev:
-					g.add_edge(t_event_prev, t_location_prev)
+        start = 0
 
-				location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
-				t_location_start = T()
-				g.add_edge(t_location_prev, t_location_start)
-				t_location_stop = T()
-				g.add_edge(t_location_start, t_location_stop, location=location_)
-				t_location_prev = t_location_stop
-				t_event_prev = t_location_start
-				
-			else:
-				event_ = ' '.join(line.split()) 
-				t_event_start = T()
-				t_event_stop = T()
-				g.add_edge(t_event_prev, t_event_start)
-				g.add_edge(t_event_start, t_event_stop, event = event_)
-				t_event_prev = t_event_stop
+        for line in r:
 
-        
-	g.add_edge(t_location_prev, t_episode_stop)
+            if re.search('\A[ \t\n\r]*\Z', line):  # Empty line.
+                continue
 
-        return g
+            if re.search(
+                '\A[ \t]*episode outline[ \t]*\Z',
+                line, re.IGNORECASE
+            ):  # Start of episode outline section.
+                start = 1
+                continue
 
-    def manual_transcript(self, url, source=None, episode=None):
+            if start == 1:
 
-	#names_map = {'Raj':'Rajesh', 'raj':'rajesh', 'Lesley':'Leslie', 'lesley':'leslie'}
-      	http = urllib3.PoolManager()
-	r = http.request('GET', url)
-	r = r.data
-	r = re.sub('<script[^<]+</script>', '', r)
- 	r = re.sub('<style[^<]+</style>', '', r)
-	r = re.sub('<div[^<]+</div>', '', r)
- 	r = re.sub('<[^>]+>', '', r)
-	r = r.split('\n')
+                if (
+                    re.search(
+                        '\A[ \t]*resources[ \t]*\Z',
+                        line,
+                        re.IGNORECASE) or
+                    re.search(
+                        '\A\[*[0-9]*\]*timeline[ \t]*\Z',
+                        line,
+                        re.IGNORECASE) or
+                    re.search(
+                        '\A[ \t]*commentary and trivia[ \t]*\Z',
+                        line,
+                        re.IGNORECASE) or
+                    re.search(
+                        '\A[ \t]*trivia[ \t]*\Z',
+                        line,
+                        re.IGNORECASE)
+                ):
+                    break
 
-	g = nx.MultiDiGraph(uri=str(episode), source=source)
-	t_episode_start = T()
-	t_episode_stop = T()
-	t_location_prev = t_episode_start
-	t_event_prev = None
+                # New location description.
+                if re.search('\A[ \t]*[IVXLCM]+[\.:]+', line):
 
-	for line in r:
-		if re.search('\A[ \t\n\r]*\Z', line): # Empty line.
-			continue
+                    # Finish the edge for previous location section.
+                    if t_event_prev:
+                        G.add_annotation(t_event_prev, t_location_prev, {})
 
-		if re.match('\A\s*[Ss]cene\s*[\.:]', line): # Scene/location description. 
-			if t_event_prev:
-					g.add_edge(t_event_prev, t_location_prev)
+                    location_ = re.sub(
+                        '\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+                    t_location_start = TFloating()
+                    G.add_annotation(t_location_prev, t_location_start, {})
+                    t_location_stop = TFloating()
+                    G.add_annotation(
+                        t_location_start, t_location_stop,
+                        {'location': location_}
+                    )
+                    t_location_prev = t_location_stop
+                    t_event_prev = t_location_start
 
-			location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
-			t_location_start = T()
-			g.add_edge(t_location_prev, t_location_start)
-			t_location_stop = T()
-			g.add_edge(t_location_start, t_location_stop, location=location_)
-			t_location_prev = t_location_stop
-			t_event_prev = t_location_start
-			continue
+                else:
 
-		if re.search('\A[ \t]*Written by', line, re.IGNORECASE) or re.search('\A[ \t]*Teleplay:', line, re.IGNORECASE) or re.search('\A[ \t]*Story:', line, re.IGNORECASE) or re.search('\A[ \t]*Like this:', line, re.IGNORECASE):
-			break
-		
-		speaker_ = re.match('\A\s*[^:\.]+\s*:', line)
-		if speaker_ == None:
-			continue # Comments e.g. '(They begin to fill out forms.)
+                    event_ = ' '.join(line.split())
+                    t_event_start = TFloating()
+                    t_event_stop = TFloating()
+                    G.add_annotation(t_event_prev, t_event_start, {})
+                    G.add_annotation(
+                        t_event_start, t_event_stop,
+                        {'event': event_}
+                    )
+                    t_event_prev = t_event_stop
 
-		speaker_ = speaker_.group()
-		speaker_ = re.sub('\A\s*','', speaker)
-		#speaker = re.sub('\s*[\.:]','', speaker).lower()
-		speaker_ = re.sub('\s*\([^)]+\)\s*','', speaker_)
-		#if speaker in names_map:
-		#	speaker = names_map[speaker]
-		speech_ = re.sub('\A\s*[^:\.]+\s*:\s*','', line)
+        G.add_annotation(t_location_prev, t_episode_stop, {})
 
-                t_event_start = T()
-                t_event_stop = T()
-                g.add_edge(t_event_prev, t_event_start)
-                g.add_edge(t_event_start, t_event_stop, speaker=speaker_, speech=speech_)
-                t_event_prev = t_event_stop
+        return G
 
-        return g
+    def manual_transcript(self, url=None, episode=None, **kwargs):
 
+        http = urllib3.PoolManager()
+        r = http.request('GET', url)
+        r = r.data
+        r = re.sub('<script[^<]+</script>', '', r)
+        r = re.sub('<style[^<]+</style>', '', r)
+        r = re.sub('<div[^<]+</div>', '', r)
+        r = re.sub('<[^>]+>', '', r)
+        r = r.split('\n')
 
+        G = AnnotationGraph(episode=episode)
+        t_episode_start = TStart()
+        t_episode_stop = TEnd()
+        t_location_prev = t_episode_start
+        t_event_prev = None
 
+        for line in r:
 
+            # Empty line
+            if re.search('\A[ \t\n\r]*\Z', line):
+                continue
 
+            # Scene/location description.
+            if re.match('\A\s*[Ss]cene\s*[\.:]', line):
+
+                if t_event_prev:
+                    G.add_annotation(t_event_prev, t_location_prev, {})
+
+                location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+                t_location_start = TFloating()
+                G.add_annotation(t_location_prev, t_location_start, {})
+                t_location_stop = TFloating()
+                G.add_annotation(
+                    t_location_start, t_location_stop,
+                    {'location': location_}
+                )
+                t_location_prev = t_location_stop
+                t_event_prev = t_location_start
+                continue
+
+            if (
+                re.search('\A[ \t]*Written by', line, re.IGNORECASE) or
+                re.search('\A[ \t]*Teleplay:', line, re.IGNORECASE) or
+                re.search('\A[ \t]*Story:', line, re.IGNORECASE) or
+                re.search('\A[ \t]*Like this:', line, re.IGNORECASE)
+            ):
+                break
+
+            speaker_ = re.match('\A\s*[^:\.]+\s*:', line)
+            # Comments e.G. '(They begin to fill out forms.)
+            if speaker_ is None:
+                continue
+
+            speaker_ = speaker_.group()
+            speaker_ = re.sub('\A\s*', '', speaker_)
+            #speaker = re.sub('\s*[\.:]','', speaker).lower()
+            speaker_ = re.sub('\s*\([^)]+\)\s*', '', speaker_)
+            #if speaker in names_map:
+            #   speaker = names_map[speaker]
+            speech_ = re.sub('\A\s*[^:\.]+\s*:\s*', '', line)
+
+            t_event_start = TFloating()
+            t_event_stop = TFloating()
+            G.add_annotation(t_event_prev, t_event_start, {})
+            G.add_annotation(
+                t_event_start, t_event_stop,
+                {'speaker': speaker_, 'speech': speech_}
+            )
+            t_event_prev = t_event_stop
+
+        return G
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
