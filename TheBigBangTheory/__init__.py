@@ -166,7 +166,7 @@ class TheBigBangTheory(SeriesPlugin):
                 if t_event_prev:
                     G.add_annotation(t_event_prev, t_location_prev, {})
 
-                location_ = re.sub('\A[ \t]*[IVXLCM]+[\.:]+[ \t]*', '', line)
+                location_ = re.sub('\A\s*[Ss]cene\s*[\.:]', '', line)
                 t_location_start = TFloating()
                 G.add_annotation(t_location_prev, t_location_start, {})
                 t_location_stop = TFloating()
