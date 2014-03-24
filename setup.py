@@ -41,10 +41,10 @@ AUTHOR_NAME = 'Anindya Roy'
 AUTHOR_EMAIL = 'roy@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd>=0.1.8'
+REQUIRES_TVD = 'tvd >= 0.2'
 
 # Additional package dependency
-REQUIRES_OTHER = []
+REQUIRES_OTHER = ['urllib3 >= 1.8']
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
 # --- UNLESS YOU KNOW WHAT YOU ARE DOING :-) ---
@@ -72,7 +72,10 @@ setup(
     author_email=AUTHOR_EMAIL,
     packages=find_packages(),
     package_data={
-        SERIES_NAME: ['tvd.yml']
+        SERIES_NAME: [
+            'tvd.yml', 
+            'data/speaker/*'
+        ],
     },
     include_package_data=True,
     install_requires=[REQUIRES_TVD] + REQUIRES_OTHER,

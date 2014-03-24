@@ -35,8 +35,37 @@ episodes: [17, 23, 23, 24, 24]
 # resources that can be downloaded from the web
 www:
 
+    speaker:
+
+        description: >
+            Manual annotation of speech turns 
+            (including 5 main characters and a 6th "other" class)
+
+        type: annotation graph
+
+        source: |
+            @inproceedings{Tapaswi2012
+                title = {{``Knock! Knock! Who is it?'' Probabilistic Person Identification in TV Series}},
+                author = {Makarand Tapaswi and Martin B\"{a}uml and Rainer Stiefelhagen},
+                booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+                year = {2012},
+                month = {June},
+            }
+
+        url:
+            - {season: 1, episode: 1, url: "data/speaker/TheBigBangTheory.Season01.Episode01.json"}
+            - {season: 1, episode: 2, url: "data/speaker/TheBigBangTheory.Season01.Episode02.json"}
+            - {season: 1, episode: 3, url: "data/speaker/TheBigBangTheory.Season01.Episode03.json"}
+            - {season: 1, episode: 4, url: "data/speaker/TheBigBangTheory.Season01.Episode04.json"}
+            - {season: 1, episode: 5, url: "data/speaker/TheBigBangTheory.Season01.Episode05.json"}
+            - {season: 1, episode: 6, url: "data/speaker/TheBigBangTheory.Season01.Episode06.json"}
+
     outline:
+
+        type: annotation graph
+
         source: "wiki.the-big-bang-theory.com"
+
         url:
             - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101"}
             - {season: 1, episode: 2, url: "http://wiki.the-big-bang-theory.com/wiki/0102"}
@@ -151,7 +180,11 @@ www:
             - {season: 5, episode: 24, url: "http://wiki.the-big-bang-theory.com/wiki/0524"}
 
     manual_transcript:
+
+        type: annotation graph
+
         source: "bigbangtrans.wordpress.com"
+
         url:
             - {season: 1, episode: 1, url: "http://bigbangtrans.wordpress.com/series-1-episode-1-pilot-episode/"}
             - {season: 1, episode: 2, url: "http://bigbangtrans.wordpress.com/series-1-episode-2-the-big-bran-hypothesis/"}

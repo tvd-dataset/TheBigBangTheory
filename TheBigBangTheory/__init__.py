@@ -27,13 +27,18 @@
 #
 
 
-from tvd.series.plugin import SeriesPlugin
 import re
 import urllib3
+from pkg_resources import resource_filename
 from tvd import TFloating, TStart, TEnd, AnnotationGraph
+from tvd import Plugin
+import warnings
 
+class TheBigBangTheory(Plugin):
 
-class TheBigBangTheory(SeriesPlugin):
+    def speaker(self, url=None, episode=None, **kwargs):
+        path = resource_filename(self.__class__.__name__, url)
+        return AnnotationGraph.load(path)
 
     def outline(self, url=None, episode=None, **kwargs):
         """
