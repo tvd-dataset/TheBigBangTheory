@@ -4,8 +4,9 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2014 Anindya ROY (http://roy-a.github.io/)
-# Copyright (c) 2013-2014 Hervé BREDIN (http://herve.niderb.fr/)
+# Copyright (c) 2013-2014 CNRS
+#   - Anindya ROY (http://roy-a.github.io/)
+#   - Hervé BREDIN (http://herve.niderb.fr/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -57,15 +58,15 @@ class TheBigBangTheory(Plugin):
         """
 
         http = urllib3.PoolManager()
-	    h = HTMLParser.HTMLParser()
+        h = HTMLParser.HTMLParser()
         r = http.request('GET', url)
         r = r.data
         r = re.sub('<script[^<]+</script>', '', r)
         r = re.sub('<style[^<]+</style>', '', r)
         r = re.sub('<div[^<]+</div>', '', r)
-	    r = re.sub('<li>', '@EVENT', r) # Alternate way to detect event,
-					# without depending on 'IXV.' etc.
-					# -> Events are always items in a list.
+        r = re.sub('<li>', '@EVENT', r) # Alternate way to detect event,
+                    # without depending on 'IXV.' etc.
+                    # -> Events are always items in a list.
         r = re.sub('<[^>]+>', '', r)
         r = r.split('\n')
 
@@ -79,8 +80,8 @@ class TheBigBangTheory(Plugin):
         start = 0
 
         for line in r:
-		
-	        line = h.unescape(line) # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
+        
+            line = h.unescape(line) # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
             if re.search('\A[ \t\n\r]*\Z', line):  # Empty line.
                 continue
 
@@ -92,7 +93,7 @@ class TheBigBangTheory(Plugin):
                 continue
 
             if start == 1:
-		    # Check end of episode outline (or empty content: 'still to come').
+            # Check end of episode outline (or empty content: 'still to come').
                 if (
                     re.search(
                         '\A[ \t]*resources[ \t]*\Z',
@@ -110,32 +111,32 @@ class TheBigBangTheory(Plugin):
                         '\A[ \t]*trivia[ \t]*\Z',
                         line,
                         re.IGNORECASE) or
-	                re.search(
-			            '\A[ \t]*Still to come[ \t]*\Z',
-			            line,
-			            re.IGNORECASE)
+                    re.search(
+                        '\A[ \t]*Still to come[ \t]*\Z',
+                        line,
+                        re.IGNORECASE)
                 ):
                     break
 
-		    # Lines to be ignored:
-		    # ----------------------
-		    # 'Titles and opening theme',
-		    # 'Titles and credits'
-		    # 'Opening themes and credits'
-		    # 'Title and Opening Themes'
-		    # 'Theme song and titles'
+            # Lines to be ignored:
+            # ----------------------
+            # 'Titles and opening theme',
+            # 'Titles and credits'
+            # 'Opening themes and credits'
+            # 'Title and Opening Themes'
+            # 'Theme song and titles'
 
             # New location description.
             #if re.search('\A[ \t]*[IVX]+[\.:]+', line): # DO NOT USE, exceptions to syntax exist.
-		    if not re.search('@EVENT', line):
+            if not re.search('@EVENT', line):
 
-		        if (
-			        re.search('title', line, re.IGNORECASE) or
-			        re.search('credit', line, re.IGNORECASE) or
-			        re.search('theme', line, re.IGNORECASE)
-		        ):
-		            continue # Assume it's 'Titles and opening theme' or something
-			         # similar. Ignore.
+                if (
+                    re.search('title', line, re.IGNORECASE) or
+                    re.search('credit', line, re.IGNORECASE) or
+                    re.search('theme', line, re.IGNORECASE)
+                ):
+                    continue # Assume it's 'Titles and opening theme' or something
+                     # similar. Ignore.
 
                 # Finish the edge for previous location section.
                 if t_event_prev:
@@ -156,7 +157,7 @@ class TheBigBangTheory(Plugin):
             else:
 
                 event_ = ' '.join(line.split())
-	            event_ = re.sub('@EVENT', '', event_)
+                event_ = re.sub('@EVENT', '', event_)
                 t_event_start = TFloating()
                 t_event_stop = TFloating()
                 G.add_annotation(t_event_prev, t_event_start, {})
@@ -166,7 +167,7 @@ class TheBigBangTheory(Plugin):
                 )
                 t_event_prev = t_event_stop
 
-	    G.add_annotation(t_event_prev, t_location_prev, {}) # Finish event.
+        G.add_annotation(t_event_prev, t_location_prev, {}) # Finish event.
         G.add_annotation(t_location_prev, t_episode_stop, {}) # Finish episode.
 
         return G
@@ -174,7 +175,7 @@ class TheBigBangTheory(Plugin):
     def manual_transcript(self, url=None, episode=None, **kwargs):
 
         http = urllib3.PoolManager()
-	    h = HTMLParser.HTMLParser()
+        h = HTMLParser.HTMLParser()
         r = http.request('GET', url)
         r = r.data
         r = re.sub('<script[^<]+</script>', '', r)
@@ -191,8 +192,8 @@ class TheBigBangTheory(Plugin):
 
         for line in r:
 
-	        #line = h.unescape(line) # Decode HTML code e.g. 
-				    # "don&#8217;t feed the .." to Unicode.
+            #line = h.unescape(line) # Decode HTML code e.g. 
+                    # "don&#8217;t feed the .." to Unicode.
             # Empty line
             if re.search('\A[ \t\n\r]*\Z', line):
                 continue
@@ -245,7 +246,7 @@ class TheBigBangTheory(Plugin):
             )
             t_event_prev = t_event_stop
 
-	    G.add_annotation(t_event_prev, t_location_prev, {})
+        G.add_annotation(t_event_prev, t_location_prev, {})
         G.add_annotation(t_location_prev, t_episode_stop, {})
         return G
 
