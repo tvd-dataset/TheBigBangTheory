@@ -5,8 +5,8 @@
 # The MIT License (MIT)
 #
 # Copyright (c) 2013-2014 CNRS
-#   - Anindya ROY (http://roy-a.github.io/)
-#   - Hervé BREDIN (http://herve.niderb.fr/)
+# - Anindya ROY (http://roy-a.github.io/)
+# - Hervé BREDIN (http://herve.niderb.fr/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -67,7 +67,6 @@ class TheBigBangTheory(Plugin):
         r = re.sub('<li>', '@EVENT', r) # Alternate way to detect event,
                     # without depending on 'IXV.' etc.
                     # -> Events are always items in a list.
-                    # Test.
         r = re.sub('<[^>]+>', '', r)
         r = r.split('\n')
 
@@ -94,7 +93,7 @@ class TheBigBangTheory(Plugin):
                 continue
 
             if start == 1:
-            # Check end of episode outline (or empty content: 'still to come').
+            # Check end of episode outline (or empty content).
                 if (
                     re.search(
                         '\A[ \t]*resources[ \t]*\Z',
@@ -116,60 +115,59 @@ class TheBigBangTheory(Plugin):
                         '\A[ \t]*Still to come[ \t]*\Z',
                         line,
                         re.IGNORECASE)
-                ):
+                  ):
                     break
 
-            # Lines to be ignored:
-            # ----------------------
-            # 'Titles and opening theme',
-            # 'Titles and credits'
-            # 'Opening themes and credits'
-            # 'Title and Opening Themes'
-            # 'Theme song and titles'
+                # Lines to be ignored:
+                # 'Titles and opening theme',
+                # 'Titles and credits'
+                # 'Opening themes and credits'
+                # 'Title and Opening Themes'
+                # 'Theme song and titles'
 
-            # New location description.
-            #if re.search('\A[ \t]*[IVX]+[\.:]+', line): # DO NOT USE, exceptions to syntax exist.
-            if not re.search('@EVENT', line):
+                # New location description.
+                #if re.search('\A[ \t]*[IVX]+[\.:]+', line): # DO NOT USE.
+                if not re.search('@EVENT', line):
 
-                if (
-                    re.search('title', line, re.IGNORECASE) or
-                    re.search('credit', line, re.IGNORECASE) or
-                    re.search('theme', line, re.IGNORECASE)
-                ):
-                    continue # Assume it's 'Titles and opening theme' or something
-                     # similar. Ignore.
+                    if (
+                        re.search('title', line, re.IGNORECASE) or
+                        re.search('credit', line, re.IGNORECASE) or
+                        re.search('theme', line, re.IGNORECASE)
+                    ):
+                        continue # Assume it's 'Titles and opening theme' or something
+                         # similar. Ignore.
 
-                # Finish the edge for previous location section.
-                if t_event_prev:
-                    G.add_annotation(t_event_prev, t_location_prev, {})
+                    # Finish the edge for previous location section.
+                    if t_event_prev:
+                        G.add_annotation(t_event_prev, t_location_prev, {})
 
-                location_ = re.sub(
-                    '\A[ \t]*[IVX]+[\.:]+[ \t]*', '', line) # Remove roman numeral.
-                t_location_start = TFloating()
-                G.add_annotation(t_location_prev, t_location_start, {})
-                t_location_stop = TFloating()
-                G.add_annotation(
+                    location_ = re.sub(
+                        '\A[ \t]*[IVX]+[\.:]+[ \t]*', '', line) # Remove roman numeral.
+                    t_location_start = TFloating()
+                    G.add_annotation(t_location_prev, t_location_start, {})
+                    t_location_stop = TFloating()
+                    G.add_annotation(
                         t_location_start, t_location_stop,
                         {'location': location_}
-                )
-                t_location_prev = t_location_stop
-                t_event_prev = t_location_start
+                    )
+                    t_location_prev = t_location_stop
+                    t_event_prev = t_location_start
 
-            else:
+                else:
 
-                event_ = ' '.join(line.split())
-                event_ = re.sub('@EVENT', '', event_)
-                t_event_start = TFloating()
-                t_event_stop = TFloating()
-                G.add_annotation(t_event_prev, t_event_start, {})
-                G.add_annotation(
+                    event_ = ' '.join(line.split())
+                    event_ = re.sub('@EVENT', '', event_)
+                    t_event_start = TFloating()
+                    t_event_stop = TFloating()
+                    G.add_annotation(t_event_prev, t_event_start, {})
+                    G.add_annotation(
                         t_event_start, t_event_stop,
                         {'event': event_}
-                )
-                t_event_prev = t_event_stop
+                    )
+                    t_event_prev = t_event_stop
 
-        G.add_annotation(t_event_prev, t_location_prev, {}) # Finish event.
-        G.add_annotation(t_location_prev, t_episode_stop, {}) # Finish episode.
+        G.add_annotation(t_event_prev, t_location_prev, {})
+        G.add_annotation(t_location_prev, t_episode_stop, {})
 
         return G
 
