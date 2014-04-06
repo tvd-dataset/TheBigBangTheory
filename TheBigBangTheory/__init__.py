@@ -67,6 +67,7 @@ class TheBigBangTheory(Plugin):
         r = re.sub('<li>', '@EVENT', r) # Alternate way to detect event,
                     # without depending on 'IXV.' etc.
                     # -> Events are always items in a list.
+                    # Test.
         r = re.sub('<[^>]+>', '', r)
         r = r.split('\n')
 
