@@ -1,5 +1,9 @@
+### Version 0.3 (2014-04-07)
 
-### Version 0.2 (2014-01-02)
+  - fix: indentation
+  - chore: tvd 0.3
+
+### Version 0.2 (2014-04-02)
 
   - fix 'outline' and 'manual_transcript' parsing
   - use setuptools instead of distribute
