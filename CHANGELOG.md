@@ -1,3 +1,7 @@
+### Version 0.3.1 (2014-04-07)
+
+  - fix: "speaker" resources
+
 ### Version 0.3 (2014-04-07)
 
   - fix: indentation
