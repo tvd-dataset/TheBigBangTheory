@@ -29,12 +29,11 @@
 
 
 import re
-import urllib3
 import HTMLParser
 from pkg_resources import resource_filename
 from tvd import TFloating, TStart, TEnd, AnnotationGraph
 from tvd import Plugin
-import warnings
+
 
 class TheBigBangTheory(Plugin):
 
@@ -57,10 +56,9 @@ class TheBigBangTheory(Plugin):
         G : AnnotationGraph
         """
 
-        http = urllib3.PoolManager()
         h = HTMLParser.HTMLParser()
-        r = http.request('GET', url)
-        r = r.data
+        r = self.download_as_utf8(url)
+
         r = re.sub('<script[^<]+</script>', '', r)
         r = re.sub('<style[^<]+</style>', '', r)
         r = re.sub('<div[^<]+</div>', '', r)
@@ -173,10 +171,10 @@ class TheBigBangTheory(Plugin):
 
     def manual_transcript(self, url=None, episode=None, **kwargs):
 
-        http = urllib3.PoolManager()
         h = HTMLParser.HTMLParser()
-        r = http.request('GET', url)
-        r = r.data
+
+        r = self.download_as_utf8(url)
+
         r = re.sub('<script[^<]+</script>', '', r)
         r = re.sub('<style[^<]+</style>', '', r)
         r = re.sub('<div[^<]+</div>', '', r)

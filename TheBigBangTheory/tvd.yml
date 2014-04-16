@@ -62,9 +62,16 @@ www:
 
     outline:
 
+        description: >
+            Episode outline (including scene location and short event description)
+
         type: annotation graph
 
-        source: "wiki.the-big-bang-theory.com"
+        source: |
+            @misc{the-big-bang-theory.com,
+                title = {{The Big Bang Theory Wiki}},
+                howpublished = \url{http://wiki.the-big-bang-theory.com/}
+            }
 
         url:
             - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101"}
@@ -139,9 +146,16 @@ www:
 
     manual_transcript:
 
-        type: annotation graph
+        description: >
+            Manual transcription of dialogues with speaker name.
 
-        source: "bigbangtrans.wordpress.com"
+        source: |
+            @misc{bigbangtrans,
+                title = {{big bang theory transcripts}},
+                howpublished = \url{http://bigbangtrans.wordpress.com/}
+            }
+
+        type: annotation graph
 
         url:
             - {season: 1, episode: 1, url: "http://bigbangtrans.wordpress.com/series-1-episode-1-pilot-episode/"}
