@@ -1,3 +1,7 @@
+### Version 0.4 (2014-04-16)
+
+  - support for TVD 0.4
+
 ### Version 0.3.1 (2014-04-07)
 
   - fix: "speaker" resources

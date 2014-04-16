@@ -41,10 +41,10 @@ AUTHOR_NAME = 'Anindya Roy'
 AUTHOR_EMAIL = 'roy@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.3'
+REQUIRES_TVD = 'tvd >= 0.4'
 
 # Additional package dependency
-REQUIRES_OTHER = ['urllib3 >= 1.8']
+REQUIRES_OTHER = []
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
 # --- UNLESS YOU KNOW WHAT YOU ARE DOING :-) ---
