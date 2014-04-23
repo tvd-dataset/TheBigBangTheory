@@ -1,3 +1,7 @@
+### Version 0.5 (2014-04-23)
+
+  - fix: missing manual transcripts
+
 ### Version 0.4 (2014-04-16)
 
   - support for TVD 0.4
