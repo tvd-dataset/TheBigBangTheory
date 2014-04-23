@@ -1,8 +1,9 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2013-2014 Hervé BREDIN (http://herve.niderb.fr/)
-# Copyright (c) 2014 Anindya ROY (http://roy-a.github.io/)
+# Copyright (c) 2013-2014 CNRS
+# - Anindya ROY (http://roy-a.github.io/)
+# - Hervé BREDIN (http://herve.niderb.fr/)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -182,7 +183,9 @@ www:
             - {season: 2, episode: 5, url: "http://bigbangtrans.wordpress.com/series-2-episode-5-the-euclid-alternative/"}
             - {season: 2, episode: 6, url: "http://bigbangtrans.wordpress.com/series-2-episode-06-the-cooper-nowitzki-theorem/"}
             - {season: 2, episode: 7, url: "http://bigbangtrans.wordpress.com/series-2-episode-07-the-panty-pinata-polarization/"}
+            - {season: 2, episode: 8, url: "http://bigbangtrans.wordpress.com/series-1-episode-08-the-lizard-spock-expansion/"}
             - {season: 2, episode: 9, url: "http://bigbangtrans.wordpress.com/series-2-episode-09-the-white-asparagus-triangulation/"}
+            - {season: 2, episode: 10, url: "http://bigbangtrans.wordpress.com/series-2-episode-11-the-vartabedian-conundrum/"}
             - {season: 2, episode: 11, url: "http://bigbangtrans.wordpress.com/series-2-episode-11-the-bath-item-gift-hypothesis/"}
             - {season: 2, episode: 12, url: "http://bigbangtrans.wordpress.com/series-2-episode-12-the-killer-robot-instability/"}
             - {season: 2, episode: 13, url: "http://bigbangtrans.wordpress.com/series-2-episode-13-the-friendship-algorithm/"}
