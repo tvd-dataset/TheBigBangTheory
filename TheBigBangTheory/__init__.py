@@ -410,7 +410,7 @@ class TheBigBangTheory(Plugin):
                 # build annotation data
                 # (with directions only if they exist)
                 data = {
-                    'speaker': speaker_mapping.get(speaker, 'unknown_speaker'),
+                    'speaker': speaker_mapping.get(speaker, 'unknown (%s)' % speaker),
                     'speech': speech,
                 }
                 if directions:
