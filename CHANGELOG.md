@@ -1,3 +1,9 @@
+### Version 0.5.1 (2014-04-28)
+
+  - fix: speaker name normalization
+  - feat: stage direction in manual_transcript
+  - chore: manual_transcript refactoring
+
 ### Version 0.5 (2014-04-23)
 
   - fix: missing manual transcripts

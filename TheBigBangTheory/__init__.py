@@ -33,6 +33,8 @@ import HTMLParser
 from pkg_resources import resource_filename
 from tvd import TFloating, TStart, TEnd, AnnotationGraph
 from tvd import Plugin
+from bs4 import BeautifulSoup
+import warnings
 
 
 class TheBigBangTheory(Plugin):
@@ -169,82 +171,269 @@ class TheBigBangTheory(Plugin):
 
         return G
 
-    def manual_transcript(self, url=None, episode=None, **kwargs):
+    @staticmethod
+    def _get_directions(text):
 
-        h = HTMLParser.HTMLParser()
+        REGEXP_DIRECTION = '([^\(^\)]*)\((.+?)\)(.*)'
 
-        r = self.download_as_utf8(url)
+        directions = []
+        text_without_directions = u''
 
-        r = re.sub('<script[^<]+</script>', '', r)
-        r = re.sub('<style[^<]+</style>', '', r)
-        r = re.sub('<div[^<]+</div>', '', r)
-        r = re.sub('<[^>]+>', '', r)
-        r = r.split('\n')
-
-        G = AnnotationGraph(episode=episode)
-        t_episode_start = TStart()
-        t_episode_stop = TEnd()
-        t_location_prev = t_episode_start
-        t_event_prev = None
-
-        for line in r:
-
-            #line = h.unescape(line) # Decode HTML code e.g. 
-                    # "don&#8217;t feed the .." to Unicode.
-            # Empty line
-            if re.search('\A[ \t\n\r]*\Z', line):
-                continue
-
-            # Scene/location description.
-            if re.match('\A\s*[Ss]cene\s*[\.:]', line):
-
-                if t_event_prev:
-                    G.add_annotation(t_event_prev, t_location_prev, {})
-
-                location_ = re.sub('\A\s*[Ss]cene\s*[\.:]', '', line)
-                t_location_start = TFloating()
-                G.add_annotation(t_location_prev, t_location_start, {})
-                t_location_stop = TFloating()
-                G.add_annotation(
-                    t_location_start, t_location_stop,
-                    {'location': location_}
-                )
-                t_location_prev = t_location_stop
-                t_event_prev = t_location_start
-                continue
-
-            if (
-                re.search('\A[ \t]*Written by', line, re.IGNORECASE) or
-                re.search('\A[ \t]*Teleplay:', line, re.IGNORECASE) or
-                re.search('\A[ \t]*Story:', line, re.IGNORECASE) or
-                re.search('\A[ \t]*Like this:', line, re.IGNORECASE)
-            ):
+        while text:
+            
+            m = re.match(REGEXP_DIRECTION, text)
+            
+            if not m:
+                text_without_directions += text
                 break
+        
+            else:
+                before, direction, after = m.groups()
+                directions.append(direction)
+                text_without_directions += before
+                text = after
+        
+        return text_without_directions, directions
 
-            speaker_ = re.match('\A\s*[^:\.]+\s*:', line)
-            # Comments e.g. '(They begin to fill out forms.)
-            if speaker_ is None:
+
+
+    def manual_transcript(self, url=None, episode=None, debug=False, **kwargs):
+
+
+        SPEAKER_MAPPING = {            
+            'abby': ['abby',],
+            'alice': ['alice',],
+            'alicia': ['alicia',],
+            'amy': ['amy',],
+            'angela': ['angela',],
+            'barry_kripke': ['barry', 'barry kripke', 'kripke'],
+            'bernadette': ['bermadette', 'bernadette', ],
+            'bethany': ['bethany',],
+            'beverley': ['beverley',],
+            'brent_spiner': ['brent', 'brent spiner'],
+            'charlie_sheen': ['charlie sheen',],
+            'christie': ['christie',],
+            'dale': ['dale',],
+            'david': ['david',],
+            'dennis': ['dennis',],
+            'dimitri': ['dimitri',],
+            'doug': ['doug',],
+            'dr_gablehouser': ['gablehauser', 'gablehouser', 'dr gablehouser',],
+            'dr_greene': ['dr. brian greene', 'greene',],
+            'dr_hofstadter': ["leonard's mother", 'dr hofstadter',],
+            'dr_koothrappali': ['dr koothrappali',],
+            'dr_massimino': ['dr massimino',],
+            'dr_millstone': ['dr millstone',],
+            'dr_seibert': ['seibert', 'siebert', 'dr. seibert', ],
+            'dr_tyson': ['dr tyson',],
+            'elizabeth': ['elizabeth',],
+            'eric': ['eric',],
+            'george_smoot': ['george smoot',],
+            'george_takei': ['george takei',],
+            'glenn': ['glenn',],
+            'hawking': ['hawking',],
+            'houston': ['houston',],
+            'howard': ['howard', 'past howard',],
+            'ira': ['ira', ],
+            'jimmy': ['jimmy',],
+            'joy': ['joy',],
+            'joyce_kim': ['joyce kim',],
+            'kathy_sackhoff': ['katee', 'katee sackhoff', 'kathy'],
+            'kevin': ['kevin',],
+            'kurt': ['kurt',],
+            'lakshmi': ['lakshmi',],
+            'lalita': ['lalita',],
+            'laura': ['laura',],
+            'leonard': ['leonard', 'past leonard', ],
+            'leslie_winkle': ['leslie winkle', 'leslie', 'lesley'],
+            'martha': ['martha', ],
+            'mie_massimino': ['mike', 'mike_massimino', 'massimino',],
+            'michaela': ['michaela', ],
+            'mike': ['mike',],
+            'missy': ['missy',],
+            'mr_rostenkowski': ['mr rostenkowski', 'mr. rostenkowski',],
+            'mrs_cooper': ['mrs cooper',],
+            'mrs_fowler': ['mrs fowler',],
+            'mrs_gunderson': ['mrs gunderson',],
+            'mrs_koothrappali': ['mrs koothrappali',],
+            'mrs_latham': ['mrs latham', ],
+            'mrs_wolowitz': ['mrs wolowitz', "howard's mother",],
+            'page': ['page',],
+            'penny': ['penny', 'past penny',],
+            'penny_dad': ["penny's dad",],
+            'pr_crawley': ['prof crawley', ],
+            'pr_goldfarb': ['goldfarb',],
+            'pr_laughlin': ['prof laughlin',],
+            'priya': ['priya', ],
+            'raj': ['raj', 'past raj', 'rai',],
+            'roeger': ['roeger',],
+            'rothman': ['rothman',],
+            'sarah': ['sarah',],
+            'sheldon': ['sheldon', 'sgeldon', 'sheldon on laptop screen', "sheldon's voice", 'past sheldon', 'on-screen sheldon', ],
+            'stan_lee': ['stan lee',],
+            'steph': ['steph',],
+            'steve_wozniak': ['steve wozniak',],
+            'stuart': ['stuart',],
+            'summer': ['summer',],            
+            'toby': ['toby',],
+            'todd': ['todd',],
+            'tom': ['tom',],
+            'venkatesh': ['venkatesh',],
+            'wil_wheaton': ['wil', 'wil wheaton',],
+            'wyatt': ['wyatt',],
+            'zack': ['zack',],
+        }
+
+        speaker_mapping = {
+            old: new for new, olds in SPEAKER_MAPPING.iteritems() for old in olds
+        }
+
+        # download webpage and parse it with BeautifulSoup
+        soup = BeautifulSoup(self.download_as_utf8(url))
+
+        # extract the following <div> containing the actual transcript
+        # <div class='entrytext'> ... </div>
+        div = soup.findAll('div', attrs={'class': 'entrytext'})[0]
+
+        # initialize empty annotation graph
+        G = AnnotationGraph(episode=episode)
+
+        # episode start and end
+        tstart = TStart()
+        tend = TEnd()
+
+        # tscene contains end of previous scene
+        tscene = tstart
+        # tspeech contains end of previous speech turn
+        tspeech = None
+
+        speakers = set([])
+
+        # loop on each <p></p> 
+        # inside <div class='entrytext'></div> 
+        for p in div.findAll('p'):
+
+            # as <p></p> sometimes contain new lines
+            # make sure we get only one long text from them
+            text = u' '.join(p.getText().split('\n')).strip()
+
+            # if line is empty, skip it
+            if not text:
                 continue
 
-            speaker_ = speaker_.group()
-            speaker_ = re.sub('\A\s*', '', speaker_)
-            #speaker = re.sub('\s*[\.:]','', speaker).lower()
-            speaker_ = re.sub('\s*\([^)]+\)\s*', '', speaker_)
-            #if speaker in names_map:
-            #   speaker = names_map[speaker]
-            speech_ = re.sub('\A\s*[^:\.]+\s*:\s*', '', line)
+            # try to match xxxxx: yyyyyy
+            REGEXP_DIALOGUE = '\A\s*([^:]+?)\s*:\s*(.*)\Z'
+            m = re.match(REGEXP_DIALOGUE, text)
+            
+            if not m:
+                # (They sit ...).
+                # (Leonard starts rattling.)
+                # u'Credits sequence.'
+                # u'Credits sequence'
+                # u'Credit sequence.'
+                # u'Credit Sequence'
+                # u'Credits sequence'
+                # u'Time shift, Leonard and Sheldon are now ...'
+                # u'Cut to Leonard entering living room in panic, ...'
+                # u'Written by...'
+                # u'(Time shift)'
 
-            t_event_start = TFloating()
-            t_event_stop = TFloating()
-            G.add_annotation(t_event_prev, t_event_start, {})
-            G.add_annotation(
-                t_event_start, t_event_stop,
-                {'speaker': speaker_, 'speech': speech_}
-            )
-            t_event_prev = t_event_stop
+                if debug:
+                    print "SKIPPING: %s" % repr(text)
 
-        G.add_annotation(t_event_prev, t_location_prev, {})
-        G.add_annotation(t_location_prev, t_episode_stop, {})
+                continue             
+
+            # if there is a match, we are in one of the following situations:
+            # Scene: blah blah blah
+            # Sheldon: blah blah blah
+            # Teleplay: blah blah blah
+            # ...
+            # left: right
+            left, right = m.groups()
+            left = left.strip().lower()
+            right = right.strip()
+
+            # if we are in of the following situations,
+            # then we found a new scene
+            # Scene: location
+            # scene: location
+            if left in {u'scene', u'secne'}:
+
+                # remove unwanted spaces from location
+                data = {'location': right.strip()}
+
+                # add the new scene to the graph
+                t1 = TFloating()  # start time
+                t2 = TFloating()  # end time
+                G.add_annotation(t1, t2, data=data)
+
+                # make sure it is connected to the previous scene
+                G.add_annotation(tscene, t1)
+
+                # make sure last speech turn of previous scene
+                # is correctly connected to end of previous scene
+                if tspeech:
+                    G.add_annotation(tspeech, tscene)
+                
+                # update end of previous scene/speech
+                tscene = t2
+                tspeech = t1
+
+            # if we are in one of the following situations
+            # Teleplay: Bill Prady & Steven Molaro
+            # Story: Chuck Lorre
+            elif left in {'story', 'teleplay'}:
+                continue
+
+            # that's what we are really looking for: 
+            # speaker_name: speech
+            else:
+
+                # remove stage directions from speaker name
+                # e.g. "penny (to raj)" becomes ("penny", ["to raj", ])
+                speaker, speaker_directions = self._get_directions(left)
+                speaker = speaker.strip()
+
+                # remove stage directions from speech
+                # "hey sheldon (laughing). where is your spot?"
+                # becomes "hey sheldon . where is your spot?", ["laughing",]
+                speech, speech_directions = self._get_directions(right)
+                speech = speech.strip()
+
+                # gather all stage directions into one long string
+                directions = u' '.join(speaker_directions + speech_directions)
+
+                # debug
+                # if speaker not in speaker_mapping:
+                #     warnings.warn('no mapping for speaker "%s"' % speaker)
+                
+                # build annotation data
+                # (with directions only if they exist)
+                data = {
+                    'speaker': speaker_mapping.get(speaker, 'unknown_speaker'),
+                    'speech': speech,
+                }
+                if directions:
+                    data['directions'] = directions
+
+                # add the new speech turn to the graph
+                t1 = TFloating()
+                t2 = TFloating()
+                G.add_annotation(t1, t2, data=data)
+
+                # make sure it is connected to the previous speech turn
+                G.add_annotation(tspeech, t1)
+
+                # update end of previous speech turn
+                tspeech = t2
+
+
+        # make sure last speech turn is correctly connected to end of last scene
+        G.add_annotation(tspeech, tscene)
+
+        # make sure last scene is correctly connected to episode end
+        G.add_annotation(tscene, tend)
+
         return G
 
 from ._version import get_versions
