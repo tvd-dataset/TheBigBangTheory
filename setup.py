@@ -44,7 +44,9 @@ AUTHOR_EMAIL = 'roy@limsi.fr'
 REQUIRES_TVD = 'tvd >= 0.4.4'
 
 # Additional package dependency
-REQUIRES_OTHER = []
+REQUIRES_OTHER = [
+    'beautifulsoup4>=4.3.2',
+]
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
 # --- UNLESS YOU KNOW WHAT YOU ARE DOING :-) ---
