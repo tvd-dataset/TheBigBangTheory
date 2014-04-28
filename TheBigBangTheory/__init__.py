@@ -199,47 +199,93 @@ class TheBigBangTheory(Plugin):
 
     def manual_transcript(self, url=None, episode=None, debug=False, **kwargs):
 
-        SPEAKER_MAPPING = {
-            # 'sheldon': 'sheldon',
-            # 'sgeldon': 'sheldon',
-            # 'leonard': 'leonard',
-            # 'penny': 'penny',
-            # 'raj': 'raj',
-            # 'howard': 'howard',
-            # # 'receptionist': 'receptionist',
-            # # 'voice from buzzer': 'voice_from_buzzer',
-            # # 'voice': 'voice',
-            # # 'enormous man': 'enormous_man',
-            # # 'man': 'man',
-            # 'doug': 'doug',
-            # 'lesley': 'leslie_winkle',
-            # 'leslie': 'leslie_winkle',
-            # 'leslie winkle': 'leslie_winkle',
-            # # 'class instructor': 'class_instructor',
-            # # 'waitress': 'waitress',
-            # #'summer': 'summer',
-            # 'gablehouser': 'gablehouser',
-            # 'dr gablehouser': 'gablehouser',
-            # 'gablehauser': 'gablehouser',
-            # 'mrs cooper': 'mrs_cooper',
-            # 'kurt': 'kurt',
-            # 'christie': 'christie',
-            # "howard's mother": 'howards_mother',
-            # 'dr koothrappali': 'dr_koothrappali',
-            # 'mrs koothrappali': 'mrs_koothrappali',
-            # 'lalita': 'lalita',
-            # 'toby': 'toby',
-            # 'dennis': 'dennis',
-            # 'goldfarb': 'goldfarb',
-            # 'mike': 'mike',
-            # 'missy': 'missy',
-            # 'eric': 'eric',
-            # 'charlie sheen': 'charlie_sheen',
-            # 'kathy': 'kathy',
-            # "leonard's mother": 'leonards_mother',
-            # # bernadette's father
-            # "mr. rostenkowski": "mr_rostenkowski",
-            # "mr rostenkowski": "mr_rostenkowski",
+
+        SPEAKER_MAPPING = {            
+            'abby': ['abby',],
+            'alice': ['alice',],
+            'alicia': ['alicia',],
+            'amy': ['amy',],
+            'angela': ['angela',],
+            'barry_kripke': ['barry', 'barry kripke', 'kripke'],
+            'bernadette': ['bermadette', 'bernadette', ],
+            'bethany': ['bethany',],
+            'beverley': ['beverley',],
+            'brent_spiner': ['brent', 'brent spiner'],
+            'charlie_sheen': ['charlie sheen',],
+            'christie': ['christie',],
+            'dale': ['dale',],
+            'david': ['david',],
+            'dennis': ['dennis',],
+            'dimitri': ['dimitri',],
+            'doug': ['doug',],
+            'dr_gablehouser': ['gablehauser', 'gablehouser', 'dr gablehouser',],
+            'dr_greene': ['dr. brian greene', 'greene',],
+            'dr_hofstadter': ["leonard's mother", 'dr hofstadter',],
+            'dr_koothrappali': ['dr koothrappali',],
+            'dr_massimino': ['dr massimino',],
+            'dr_millstone': ['dr millstone',],
+            'dr_seibert': ['seibert', 'siebert', 'dr. seibert', ],
+            'dr_tyson': ['dr tyson',],
+            'elizabeth': ['elizabeth',],
+            'eric': ['eric',],
+            'george_smoot': ['george smoot',],
+            'george_takei': ['george takei',],
+            'glenn': ['glenn',],
+            'hawking': ['hawking',],
+            'houston': ['houston',],
+            'howard': ['howard', 'past howard',],
+            'ira': ['ira', ],
+            'jimmy': ['jimmy',],
+            'joy': ['joy',],
+            'joyce_kim': ['joyce kim',],
+            'kathy_sackhoff': ['katee', 'katee sackhoff', 'kathy'],
+            'kevin': ['kevin',],
+            'kurt': ['kurt',],
+            'lakshmi': ['lakshmi',],
+            'lalita': ['lalita',],
+            'laura': ['laura',],
+            'leonard': ['leonard', 'past leonard', ],
+            'leslie_winkle': ['leslie winkle', 'leslie', 'lesley'],
+            'martha': ['martha', ],
+            'mie_massimino': ['mike', 'mike_massimino', 'massimino',],
+            'michaela': ['michaela', ],
+            'mike': ['mike',],
+            'missy': ['missy',],
+            'mr_rostenkowski': ['mr rostenkowski', 'mr. rostenkowski',],
+            'mrs_cooper': ['mrs cooper',],
+            'mrs_fowler': ['mrs fowler',],
+            'mrs_gunderson': ['mrs gunderson',],
+            'mrs_koothrappali': ['mrs koothrappali',],
+            'mrs_latham': ['mrs latham', ],
+            'mrs_wolowitz': ['mrs wolowitz', "howard's mother",],
+            'page': ['page',],
+            'penny': ['penny', 'past penny',],
+            'penny_dad': ["penny's dad",],
+            'pr_crawley': ['prof crawley', ],
+            'pr_goldfarb': ['goldfarb',],
+            'pr_laughlin': ['prof laughlin',],
+            'priya': ['priya', ],
+            'raj': ['raj', 'past raj', 'rai',],
+            'roeger': ['roeger',],
+            'rothman': ['rothman',],
+            'sarah': ['sarah',],
+            'sheldon': ['sheldon', 'sgeldon', 'sheldon on laptop screen', "sheldon's voice", 'past sheldon', 'on-screen sheldon', ],
+            'stan_lee': ['stan lee',],
+            'steph': ['steph',],
+            'steve_wozniak': ['steve wozniak',],
+            'stuart': ['stuart',],
+            'summer': ['summer',],            
+            'toby': ['toby',],
+            'todd': ['todd',],
+            'tom': ['tom',],
+            'venkatesh': ['venkatesh',],
+            'wil_wheaton': ['wil', 'wil wheaton',],
+            'wyatt': ['wyatt',],
+            'zack': ['zack',],
+        }
+
+        speaker_mapping = {
+            old: new for new, olds in SPEAKER_MAPPING.iteritems() for old in olds
         }
 
         # download webpage and parse it with BeautifulSoup
@@ -311,7 +357,7 @@ class TheBigBangTheory(Plugin):
             # then we found a new scene
             # Scene: location
             # scene: location
-            if left == u'scene':
+            if left in {u'scene', u'secne'}:
 
                 # remove unwanted spaces from location
                 data = {'location': right.strip()}
@@ -358,13 +404,13 @@ class TheBigBangTheory(Plugin):
                 directions = u' '.join(speaker_directions + speech_directions)
 
                 # debug
-                if speaker not in SPEAKER_MAPPING:
-                    warnings.warn('no mapping for speaker "%s"' % speaker)
+                # if speaker not in speaker_mapping:
+                #     warnings.warn('no mapping for speaker "%s"' % speaker)
                 
                 # build annotation data
                 # (with directions only if they exist)
                 data = {
-                    'speaker': SPEAKER_MAPPING.get(speaker, speaker),
+                    'speaker': speaker_mapping.get(speaker, 'unknown_speaker'),
                     'speech': speech,
                 }
                 if directions:
@@ -389,91 +435,6 @@ class TheBigBangTheory(Plugin):
         G.add_annotation(tscene, tend)
 
         return G
-
-    # def manual_transcript(self, url=None, episode=None, **kwargs):
-
-    #     h = HTMLParser.HTMLParser()
-
-    #     r = self.download_as_utf8(url)
-
-    #     # remove <script>...</script>
-    #     r = re.sub('<script[^<]+</script>', '', r)
-
-    #     # remove <style>...</style>
-    #     r = re.sub('<style[^<]+</style>', '', r)
-
-    #     # remove <div>..</div>
-    #     r = re.sub('<div[^<]+</div>', '', r)
-
-    #     # remove 
-    #     r = re.sub('<[^>]+>', '', r)
-    #     r = r.split('\n')
-
-    #     G = AnnotationGraph(episode=episode)
-    #     t_episode_start = TStart()
-    #     t_episode_stop = TEnd()
-    #     t_location_prev = t_episode_start
-    #     t_event_prev = None
-
-    #     for line in r:
-
-    #         #line = h.unescape(line) # Decode HTML code e.g. 
-    #                 # "don&#8217;t feed the .." to Unicode.
-    #         # Empty line
-    #         if re.search('\A[ \t\n\r]*\Z', line):
-    #             continue
-
-    #         # Scene/location description.
-    #         if re.match('\A\s*[Ss]cene\s*[\.:]', line):
-
-    #             if t_event_prev:
-    #                 G.add_annotation(t_event_prev, t_location_prev, {})
-
-    #             location_ = re.sub('\A\s*[Ss]cene\s*[\.:]', '', line)
-    #             t_location_start = TFloating()
-    #             G.add_annotation(t_location_prev, t_location_start, {})
-    #             t_location_stop = TFloating()
-    #             G.add_annotation(
-    #                 t_location_start, t_location_stop,
-    #                 {'location': location_}
-    #             )
-    #             t_location_prev = t_location_stop
-    #             t_event_prev = t_location_start
-    #             continue
-
-    #         if (
-    #             re.search('\A[ \t]*Written by', line, re.IGNORECASE) or
-    #             re.search('\A[ \t]*Teleplay:', line, re.IGNORECASE) or
-    #             re.search('\A[ \t]*Story:', line, re.IGNORECASE) or
-    #             re.search('\A[ \t]*Like this:', line, re.IGNORECASE)
-    #         ):
-    #             break
-
-    #         speaker_ = re.match('\A\s*[^:\.]+\s*:', line)
-    #         # Comments e.g. '(They begin to fill out forms.)
-    #         if speaker_ is None:
-    #             continue
-
-    #         speaker_ = speaker_.group()
-    #         speaker_ = re.sub('\A\s*', '', speaker_)
-    #         #speaker = re.sub('\s*[\.:]','', speaker).lower()
-    #         speaker_ = re.sub('\s*\([^)]+\)\s*', '', speaker_)
-    #         #if speaker in names_map:
-    #         #   speaker = names_map[speaker]
-    #         speech_ = re.sub('\A\s*[^:\.]+\s*:\s*', '', line)
-
-    #         t_event_start = TFloating()
-    #         t_event_stop = TFloating()
-    #         G.add_annotation(t_event_prev, t_event_start, {})
-    #         G.add_annotation(
-    #             t_event_start, t_event_stop,
-    #             {'speaker': speaker_, 'speech': speech_}
-    #         )
-    #         t_event_prev = t_event_stop
-
-    #     G.add_annotation(t_event_prev, t_location_prev, {})
-    #     G.add_annotation(t_location_prev, t_episode_stop, {})
-    #     return G
 
 from ._version import get_versions
 __version__ = get_versions()['version']
