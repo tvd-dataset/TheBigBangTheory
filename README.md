@@ -1,4 +1,4 @@
-TheBigBangTheory
-=============
+# *"The Big Bang Theory"* TVD Plugin
 
-TheBigBangTheory TVD plugin
+[Documentation](http://nbviewer.ipython.org/github/tvd-dataset/TheBigBangTheory/blob/master/documentation.ipynb)
+
