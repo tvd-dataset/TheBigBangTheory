@@ -196,11 +196,18 @@ class TheBigBangTheory(Plugin):
         return text_without_directions, directions
 
 
+    # helper function to iterate over weird-structured manual transcript lines
+    @staticmethod
+    def _manual_transcript_line_iterator(div):
+        for p in div.findAll('p'):
+            for line in p.text.split('\n'):
+                line = line.strip()
+                if line:
+                    yield line
 
-    def manual_transcript(self, url=None, episode=None, debug=False, **kwargs):
+    def manual_transcript(self, url=None, episode=None, debug=True, **kwargs):
 
-
-        SPEAKER_MAPPING = {            
+        SPEAKER_MAPPING = {
             'abby': ['abby',],
             'alice': ['alice',],
             'alicia': ['alicia',],
@@ -309,17 +316,7 @@ class TheBigBangTheory(Plugin):
 
         speakers = set([])
 
-        # loop on each <p></p> 
-        # inside <div class='entrytext'></div> 
-        for p in div.findAll('p'):
-
-            # as <p></p> sometimes contain new lines
-            # make sure we get only one long text from them
-            text = u' '.join(p.getText().split('\n')).strip()
-
-            # if line is empty, skip it
-            if not text:
-                continue
+        for text in self._manual_transcript_line_iterator(div):
 
             # try to match xxxxx: yyyyyy
             REGEXP_DIALOGUE = '\A\s*([^:]+?)\s*:\s*(.*)\Z'

@@ -1,3 +1,8 @@
+### Version 0.5.3 (2014-04-30)
+
+  - fix: multi-lines manual transcript
+  - doc: IPython notebook tutorial
+
 ### Version 0.5.2 (2014-04-28)
 
   - fix: speaker name normalization
