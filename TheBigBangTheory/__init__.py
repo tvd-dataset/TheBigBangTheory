@@ -31,7 +31,7 @@
 import re
 import HTMLParser
 from pkg_resources import resource_filename
-from tvd import TFloating, TStart, TEnd, AnnotationGraph
+from tvd import T, TStart, TEnd, Transcription
 from tvd import Plugin
 from bs4 import BeautifulSoup
 import warnings
@@ -41,7 +41,7 @@ class TheBigBangTheory(Plugin):
 
     def speaker(self, url=None, episode=None, **kwargs):
         path = resource_filename(self.__class__.__name__, url)
-        return AnnotationGraph.load(path)
+        return Transcription.load(path)
 
     def outline(self, url=None, episode=None, **kwargs):
         """
@@ -55,7 +55,7 @@ class TheBigBangTheory(Plugin):
 
         Returns
         -------
-        G : AnnotationGraph
+        G : Transcription
         """
 
         h = HTMLParser.HTMLParser()
@@ -70,10 +70,10 @@ class TheBigBangTheory(Plugin):
         r = re.sub('<[^>]+>', '', r)
         r = r.split('\n')
 
-        G = AnnotationGraph(episode=episode)
+        G = Transcription(episode=episode)
 
-        t_episode_start = TStart()
-        t_episode_stop = TEnd()
+        t_episode_start = TStart
+        t_episode_stop = TEnd
         t_location_prev = t_episode_start
         t_event_prev = None
 
@@ -139,17 +139,14 @@ class TheBigBangTheory(Plugin):
 
                     # Finish the edge for previous location section.
                     if t_event_prev:
-                        G.add_annotation(t_event_prev, t_location_prev, {})
+                        G.add_edge(t_event_prev, t_location_prev)
 
                     location_ = re.sub(
                         '\A[ \t]*[IVX]+[\.:]+[ \t]*', '', line) # Remove roman numeral.
-                    t_location_start = TFloating()
-                    G.add_annotation(t_location_prev, t_location_start, {})
-                    t_location_stop = TFloating()
-                    G.add_annotation(
-                        t_location_start, t_location_stop,
-                        {'location': location_}
-                    )
+                    t_location_start = T()
+                    G.add_edge(t_location_prev, t_location_start)
+                    t_location_stop = T()
+                    G.add_edge(t_location_start, t_location_stop, location=location_)
                     t_location_prev = t_location_stop
                     t_event_prev = t_location_start
 
@@ -157,17 +154,14 @@ class TheBigBangTheory(Plugin):
 
                     event_ = ' '.join(line.split())
                     event_ = re.sub('@EVENT', '', event_)
-                    t_event_start = TFloating()
-                    t_event_stop = TFloating()
-                    G.add_annotation(t_event_prev, t_event_start, {})
-                    G.add_annotation(
-                        t_event_start, t_event_stop,
-                        {'event': event_}
-                    )
+                    t_event_start = T()
+                    t_event_stop = T()
+                    G.add_edge(t_event_prev, t_event_start)
+                    G.add_edge(t_event_start, t_event_stop, event=event_)
                     t_event_prev = t_event_stop
 
-        G.add_annotation(t_event_prev, t_location_prev, {})
-        G.add_annotation(t_location_prev, t_episode_stop, {})
+        G.add_edge(t_event_prev, t_location_prev)
+        G.add_edge(t_location_prev, t_episode_stop)
 
         return G
 
@@ -303,11 +297,11 @@ class TheBigBangTheory(Plugin):
         div = soup.findAll('div', attrs={'class': 'entrytext'})[0]
 
         # initialize empty annotation graph
-        G = AnnotationGraph(episode=episode)
+        G = Transcription(episode=episode)
 
         # episode start and end
-        tstart = TStart()
-        tend = TEnd()
+        tstart = TStart
+        tend = TEnd
 
         # tscene contains end of previous scene
         tscene = tstart
@@ -360,17 +354,17 @@ class TheBigBangTheory(Plugin):
                 data = {'location': right.strip()}
 
                 # add the new scene to the graph
-                t1 = TFloating()  # start time
-                t2 = TFloating()  # end time
-                G.add_annotation(t1, t2, data=data)
+                t1 = T()  # start time
+                t2 = T()  # end time
+                G.add_edge(t1, t2, **data)
 
                 # make sure it is connected to the previous scene
-                G.add_annotation(tscene, t1)
+                G.add_edge(tscene, t1)
 
                 # make sure last speech turn of previous scene
                 # is correctly connected to end of previous scene
                 if tspeech:
-                    G.add_annotation(tspeech, tscene)
+                    G.add_edge(tspeech, tscene)
                 
                 # update end of previous scene/speech
                 tscene = t2
@@ -414,22 +408,22 @@ class TheBigBangTheory(Plugin):
                     data['directions'] = directions
 
                 # add the new speech turn to the graph
-                t1 = TFloating()
-                t2 = TFloating()
-                G.add_annotation(t1, t2, data=data)
+                t1 = T()
+                t2 = T()
+                G.add_edge(t1, t2, **data)
 
                 # make sure it is connected to the previous speech turn
-                G.add_annotation(tspeech, t1)
+                G.add_edge(tspeech, t1)
 
                 # update end of previous speech turn
                 tspeech = t2
 
 
         # make sure last speech turn is correctly connected to end of last scene
-        G.add_annotation(tspeech, tscene)
+        G.add_edge(tspeech, tscene)
 
         # make sure last scene is correctly connected to episode end
-        G.add_annotation(tscene, tend)
+        G.add_edge(tscene, tend)
 
         return G
 

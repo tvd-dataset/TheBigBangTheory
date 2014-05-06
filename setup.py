@@ -41,7 +41,7 @@ AUTHOR_NAME = 'Anindya Roy'
 AUTHOR_EMAIL = 'roy@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.4.4'
+REQUIRES_TVD = 'tvd >= 0.5'
 
 # Additional package dependency
 REQUIRES_OTHER = [
