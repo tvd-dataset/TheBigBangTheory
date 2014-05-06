@@ -1,3 +1,7 @@
+### Version 0.6 (2014-05-06)
+
+  - chore: support for tvd 0.5
+
 ### Version 0.5.3 (2014-04-30)
 
   - fix: multi-lines manual transcript
