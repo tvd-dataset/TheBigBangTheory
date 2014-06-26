@@ -33,8 +33,7 @@ language: "en"
 # number of episodes per season
 episodes: [17, 23, 23, 24, 24]
 
-# resources that can be downloaded from the web
-www:
+resources:
 
     speaker:
 
