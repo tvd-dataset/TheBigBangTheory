@@ -40,9 +40,9 @@ www:
 
         description: >
             Manual annotation of speech turns 
-            (including 5 main characters and a 6th "other" class)
+            (including 5 main characters, a 6th "other" class)
 
-        type: annotation graph
+        type: annotation
 
         source: |
             @inproceedings{Tapaswi2012
@@ -54,12 +54,12 @@ www:
             }
 
         url:
-            - {season: 1, episode: 1, url: "data/speaker/TheBigBangTheory.Season01.Episode01.json"}
-            - {season: 1, episode: 2, url: "data/speaker/TheBigBangTheory.Season01.Episode02.json"}
-            - {season: 1, episode: 3, url: "data/speaker/TheBigBangTheory.Season01.Episode03.json"}
-            - {season: 1, episode: 4, url: "data/speaker/TheBigBangTheory.Season01.Episode04.json"}
-            - {season: 1, episode: 5, url: "data/speaker/TheBigBangTheory.Season01.Episode05.json"}
-            - {season: 1, episode: 6, url: "data/speaker/TheBigBangTheory.Season01.Episode06.json"}
+            - {season: 1, episode: 1, url: "data/speaker/TheBigBangTheory.Season01.Episode01.txt"}
+            - {season: 1, episode: 2, url: "data/speaker/TheBigBangTheory.Season01.Episode02.txt"}
+            - {season: 1, episode: 3, url: "data/speaker/TheBigBangTheory.Season01.Episode03.txt"}
+            - {season: 1, episode: 4, url: "data/speaker/TheBigBangTheory.Season01.Episode04.txt"}
+            - {season: 1, episode: 5, url: "data/speaker/TheBigBangTheory.Season01.Episode05.txt"}
+            - {season: 1, episode: 6, url: "data/speaker/TheBigBangTheory.Season01.Episode06.txt"}
 
     outline:
 

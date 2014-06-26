@@ -32,6 +32,7 @@ import re
 import HTMLParser
 from pkg_resources import resource_filename
 from tvd import T, TStart, TEnd, Transcription
+from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
 import warnings
@@ -40,8 +41,32 @@ import warnings
 class TheBigBangTheory(Plugin):
 
     def speaker(self, url=None, episode=None, **kwargs):
+
+        # path to 'speaker' package resource
         path = resource_filename(self.__class__.__name__, url)
-        return Transcription.load(path)
+
+        # create empty annotation
+        annotation = Annotation(uri=episode)
+
+        # load file and split lines
+        with open(path, 'r') as f:
+            content = [line.strip().split() for line in f]
+
+        # loop on file content
+        for tokens in content:
+
+            # parse line
+            startTime = float(tokens[0])
+            duration = float(tokens[1])
+            endTime = startTime + duration
+            label = str(tokens[2])
+
+            # add corresponding annotation
+            segment = Segment(startTime, endTime)
+            track = annotation.new_track(segment)
+            annotation[segment, track] = label
+
+        return annotation
 
     def outline(self, url=None, episode=None, **kwargs):
         """
