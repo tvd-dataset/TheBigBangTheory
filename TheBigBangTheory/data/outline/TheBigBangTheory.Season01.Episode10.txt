@@ -1,0 +1,25 @@
+0 206 location First floor of the building
+0 206 event Leonard and Sheldon talk about Terminator when they hear Penny singing "Out Tonight", but very off-key. Penny tells them she got a part in a one-night showcase of a workshop production of Rent. She invites them to come, but Leonard creates a lie to avoid having to go.
+206 229 jingle
+229 331 location in front of Leonard's bedroom and Living room, 2 am
+229 331 event Sheldon tells Leonard he's afraid Penny could find out he lied to her.
+331 333 jingle
+333 377 location In front of Leonard's bedroom, still at night
+333 377 event Sheldon gets more and more paranoid that Penny could find out the truth.
+377 378 jingle
+378 429 location Hallway in front of apartments, in the morning
+378 429 event Sheldon tells Penny that Leonard lied and tells her a new, (from his point of view) "un-unravelable" lie.
+429 578 location Living room
+429 578 event Sheldon tells Leonard about his "explicitly convoluted" new lie involving an imaginary cousin Leo, a drug addict who has escaped rehab.
+578 751 location Living room, Friday evening
+578 751 event Penny is ready to leave for her performance. Howard and Raj turn up and Penny explains them that Leonard and Sheldon are going to a drug intervention with Leo.
+751 752 jingle
+752 843 location In front of Leonard's bedroom, Friday night
+752 843 event Sheldon is paranoid that Penny wouldn't believe that they convinced Leo to go into rehab.
+843 1115 location Living room, Saturday morning
+843 959 event Leonard wakes up to find an unknown man in his kitchen, a physics research assistant that Sheldon invited to play Leo
+959 1081 event Penny enters and Sheldon introduces her to Leo
+1081 1115 event To give Leo and Sheldon privacy, Penny invites Leonard to see her video of last night's performance.
+1115 1162 location Living room, Sunday 
+1115 1162 event Penny and Leo are watching a movie, while Leonard wonders how long Leo will stay.
+1162 1190 credits

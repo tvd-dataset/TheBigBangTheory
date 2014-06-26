@@ -1,0 +1,28 @@
+0 155 location Living room
+0 57 event The guys are playing with X10s and public access.
+57 155 event Penny enters and is not impressed.
+155 179 jingle
+179 355 location Living room
+179 240 event Leonard finds a letter inviting him and Sheldon to present their work at a conference.
+240 355 event Sheldon explains he won't go because he finds it "pandering" and doesn't want Leonard to go either. They start to argue.
+355 356 jingle
+356 524 location Leonard's bedroom
+356 524 event Penny and Leonard try to figure out what he could wear to the talk. Penny is not impressed with his clothes.
+524 525 jingle
+525 679 location Stairway and hallway before apartments
+525 679 event Penny tries to talk to Sheldon about the disagreement with Leonard but accidentally makes things worse.
+679 734 location Living room
+679 734 event Leonard and Penny leave for the conference while Sheldon is still angry and refuses to accompany them.
+734 736 jingle
+736 802 location Hallway in front of the Rose Room of the Pasadena Marriott
+736 802 event Leonard is nervous before his talk. Howard, Rajesh and Penny try to cheer him up.
+802 959 location Rose Room of the Pasadena Marriott
+802 923 event After Leonard finished his talk Sheldon appears and they start an argument which turns into a physical altercation.
+923 959 event Howard records the fight on his cell phone.
+959 1067 location Living room
+959 999 event Sheldon and Leonard arrive home.
+999 1045 event Howard and Rajesh enter and show them the video on YouTube.
+1045 1067 event Penny enters and confronts Howard about pictures he posted on Facebook.
+1067 1096 location Somewhere in China
+1067 1096 event A Chinese Sheldon and Chinese Leonard watch the video on YouTube when their lights are turned on and off by "someone in Pasadena, California, called Wolowizard".
+1096 1125 credits

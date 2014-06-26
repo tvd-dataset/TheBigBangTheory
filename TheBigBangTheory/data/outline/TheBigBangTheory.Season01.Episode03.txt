@@ -1,0 +1,31 @@
+0 100 location Living room
+0 100 event The guys are playing World of Warcraft.
+100 123 jingle
+123 151 location Living room and hallway in front of apartments
+123 151 event The guys have finished their game and hear Penny giggling in the hallway.
+151 191 location Hallway in front of apartments
+151 191 event Leonard runs into Penny kissing her boyfriend Doug.
+191 307 location Living room 
+191 307 event He feels depressed and the guys try to cheer him up by suggesting he could ask Leslie Winkle out for a date.
+307 308 jingle
+308 441 location Physics lab
+308 441 event Leonard asks Leslie out and she turns him down after an experimental kiss.
+441 545 location Living room
+441 545 event Howard, Rajesh and Sheldon discuss whether Sheldon was a robot. Leonard comes home and is even more depressed.
+545 581 location Large room
+545 581 event The guys participate in a dancing class.
+581 693 location Living room
+581 693 event Sheldon tries to prevent Leonard from buying a cat and points out he had never asked Penny out.
+693 775 location Hallway in front of apartments
+693 775 event Leonard asks Penny out but doesn't specify it as a date.
+775 777 jingle
+777 959 location Living room
+777 959 event Leonard panics and Sheldon tries to help.
+959 960 jingle
+960 1154 location Restaurant
+960 1154 event Leonard and Penny have some problems finding a common level of communication.
+1154 1228 location Hallway in front of apartments
+1154 1228 event Penny asks Leonard whether the evening was a date, he denies.
+1228 1242 location Living room
+1228 1242 event Sheldon, Howard and Rajesh are playing a computer game. Leonard states the date was "awesome".
+1242 1270 credits

@@ -68,7 +68,7 @@ class TheBigBangTheory(Plugin):
 
         return annotation
 
-    def outline(self, url=None, episode=None, **kwargs):
+    def outline_raw(self, url=None, episode=None, **kwargs):
         """
         Parameters
         ----------
@@ -105,7 +105,7 @@ class TheBigBangTheory(Plugin):
         start = 0
 
         for line in r:
-        
+
             line = h.unescape(line) # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
             if re.search('\A[ \t\n\r]*\Z', line):  # Empty line.
                 continue
@@ -189,6 +189,32 @@ class TheBigBangTheory(Plugin):
         G.add_edge(t_location_prev, t_episode_stop)
 
         return G
+
+    def outline(self, url=None, episode=None, **kwargs):
+
+        # path to 'outline' package resource
+        path = resource_filename(self.__class__.__name__, url)
+
+        # create empty transcription
+        transcription = Transcription(episode=episode)
+
+        # load file and split lines
+        with open(path, 'r') as f:
+            content = [line.strip().split() for line in f]
+
+        # loop on file content
+        for tokens in content:
+
+            # parse line
+            startTime = float(tokens[0])
+            endTime = float(tokens[1])
+            dataType = str(tokens[2])
+            data = " ".join(tokens[3:])
+
+            # add corresponding edge
+            transcription.add_edge(startTime, endTime, **{dataType: data})
+
+        return transcription
 
     @staticmethod
     def _get_directions(text):

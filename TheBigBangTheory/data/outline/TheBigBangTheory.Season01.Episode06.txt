@@ -1,0 +1,26 @@
+0 140 location Stairs - Sunday morning
+0 55 event The boys discuss their dismal failure at paintball.
+55 140 event Penny invites them to her party on Saturday
+140 163 jingle
+163 224 location Living room, Saturday, about 6 pm
+163 224 event The guys each turn up wearing a Flash costume ("...we could walk right behind each other all night and look like one person going really fast!")
+224 225 jingle 
+225 336 location Living room, 7 pm
+225 336 event The guys come back, this time in different costumes
+336 338 jingle
+338 457 location hallway and Penny's apartment, 7.05 pm
+338 457 event The guys go across the hall to the party, but they're quite early, not realizing that people don't actually show up at the time specified
+457 643 location Penny's apartment, at least an hour later
+457 643 event Party in full swing; Howard tries to make a move on one girl, Sheldon and Leonard try to talk to another girl.
+643 929 location Penny's apartment, some time later
+643 671 event Party still going strong, Sheldon and Leonard are still trying to find things to talk about to the other guests.
+671 910 event Kurt shows up, Leonard tries stand up to him, but Kurt embarrasses Leonard.
+910 929 event Leonard and Sheldon leave the party.
+929 1132 location Living room
+929 972 event Sheldon does his best to offer tea and sympathy, then heads off to bed.
+972 1132 event Penny comes in, drunk, to apologize for Kurt's behavior and kisses Leonard, who lets her off the hook by blaming it on the fact that she's drunk, and doesn't take advantage of her.
+1132 1159 location Living Room - some hours later
+1132 1159 event Howard knocks on the door, looking for Raj.
+1159 1184 location Cheryl's Bedroom
+1159 1184 event Raj gets lucky.
+1184 1212 credits

@@ -64,15 +64,44 @@ www:
     outline:
 
         description: >
-            Episode outline (including scene location and short event description)
+            Timed episode outline (including scene location and short event description)
 
-        type: annotation graph
+        type: transcription
 
         source: |
             @misc{the-big-bang-theory.com,
                 title = {{The Big Bang Theory Wiki}},
                 howpublished = \url{http://wiki.the-big-bang-theory.com/}
             }
+
+        license: GNU Free Documentation License 1.3
+
+        url:
+            - {season: 1, episode: 1, url: "data/outline/TheBigBangTheory.Season01.Episode01.txt"}
+            - {season: 1, episode: 2, url: "data/outline/TheBigBangTheory.Season01.Episode02.txt"}
+            - {season: 1, episode: 3, url: "data/outline/TheBigBangTheory.Season01.Episode03.txt"}
+            - {season: 1, episode: 4, url: "data/outline/TheBigBangTheory.Season01.Episode04.txt"}
+            - {season: 1, episode: 5, url: "data/outline/TheBigBangTheory.Season01.Episode05.txt"}
+            - {season: 1, episode: 6, url: "data/outline/TheBigBangTheory.Season01.Episode06.txt"}
+            - {season: 1, episode: 7, url: "data/outline/TheBigBangTheory.Season01.Episode07.txt"}
+            - {season: 1, episode: 8, url: "data/outline/TheBigBangTheory.Season01.Episode08.txt"}
+            - {season: 1, episode: 9, url: "data/outline/TheBigBangTheory.Season01.Episode09.txt"}
+            - {season: 1, episode: 10, url: "data/outline/TheBigBangTheory.Season01.Episode10.txt"}
+
+    outline_raw:
+
+        description: >
+            Raw episode outline (including scene location and short event description)
+
+        type: transcription
+
+        source: |
+            @misc{the-big-bang-theory.com,
+                title = {{The Big Bang Theory Wiki}},
+                howpublished = \url{http://wiki.the-big-bang-theory.com/}
+            }
+
+        license: GNU Free Documentation License 1.3
 
         url:
             - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101"}
