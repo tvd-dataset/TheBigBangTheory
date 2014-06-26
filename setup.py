@@ -37,11 +37,11 @@ SERIES_NAME = 'TheBigBangTheory'
 # containing __init__.py and tvd.yml
 
 # Plugin author name and email address
-AUTHOR_NAME = 'Anindya Roy'
-AUTHOR_EMAIL = 'roy@limsi.fr'
+AUTHOR_NAME = 'Hervé Bredin'
+AUTHOR_EMAIL = 'bredin@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.5'
+REQUIRES_TVD = 'tvd >= 0.6'
 
 # Additional package dependency
 REQUIRES_OTHER = [
@@ -75,8 +75,9 @@ setup(
     packages=find_packages(),
     package_data={
         SERIES_NAME: [
-            'tvd.yml', 
-            'data/speaker/*'
+            'tvd.yml',
+            'data/speaker/*',
+            'data/outline/*',
         ],
     },
     include_package_data=True,
