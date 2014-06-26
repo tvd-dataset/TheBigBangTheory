@@ -1,3 +1,10 @@
+### Version 0.7 (2014-06-26)
+
+  - chore: support for tvd 0.6
+  - feat: add timestamps to (some) outlines
+  - chore: change 'speaker' resource into dense annotation
+  - chore: rename 'manual_transcript' to 'manual_transcript_raw'
+
 ### Version 0.6 (2014-05-06)
 
   - chore: support for tvd 0.5
