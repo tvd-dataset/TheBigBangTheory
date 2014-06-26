@@ -32,6 +32,7 @@ import re
 import HTMLParser
 from pkg_resources import resource_filename
 from tvd import T, TStart, TEnd, Transcription
+from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
 import warnings
@@ -40,10 +41,34 @@ import warnings
 class TheBigBangTheory(Plugin):
 
     def speaker(self, url=None, episode=None, **kwargs):
-        path = resource_filename(self.__class__.__name__, url)
-        return Transcription.load(path)
 
-    def outline(self, url=None, episode=None, **kwargs):
+        # path to 'speaker' package resource
+        path = resource_filename(self.__class__.__name__, url)
+
+        # create empty annotation
+        annotation = Annotation(uri=episode)
+
+        # load file and split lines
+        with open(path, 'r') as f:
+            content = [line.strip().split() for line in f]
+
+        # loop on file content
+        for tokens in content:
+
+            # parse line
+            startTime = float(tokens[0])
+            duration = float(tokens[1])
+            endTime = startTime + duration
+            label = str(tokens[2])
+
+            # add corresponding annotation
+            segment = Segment(startTime, endTime)
+            track = annotation.new_track(segment)
+            annotation[segment, track] = label
+
+        return annotation
+
+    def outline_raw(self, url=None, episode=None, **kwargs):
         """
         Parameters
         ----------
@@ -80,7 +105,7 @@ class TheBigBangTheory(Plugin):
         start = 0
 
         for line in r:
-        
+
             line = h.unescape(line) # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
             if re.search('\A[ \t\n\r]*\Z', line):  # Empty line.
                 continue
@@ -165,6 +190,32 @@ class TheBigBangTheory(Plugin):
 
         return G
 
+    def outline(self, url=None, episode=None, **kwargs):
+
+        # path to 'outline' package resource
+        path = resource_filename(self.__class__.__name__, url)
+
+        # create empty transcription
+        transcription = Transcription(episode=episode)
+
+        # load file and split lines
+        with open(path, 'r') as f:
+            content = [line.strip().split() for line in f]
+
+        # loop on file content
+        for tokens in content:
+
+            # parse line
+            startTime = float(tokens[0])
+            endTime = float(tokens[1])
+            dataType = str(tokens[2])
+            data = " ".join(tokens[3:])
+
+            # add corresponding edge
+            transcription.add_edge(startTime, endTime, **{dataType: data})
+
+        return transcription
+
     @staticmethod
     def _get_directions(text):
 
@@ -174,19 +225,19 @@ class TheBigBangTheory(Plugin):
         text_without_directions = u''
 
         while text:
-            
+
             m = re.match(REGEXP_DIRECTION, text)
-            
+
             if not m:
                 text_without_directions += text
                 break
-        
+
             else:
                 before, direction, after = m.groups()
                 directions.append(direction)
                 text_without_directions += before
                 text = after
-        
+
         return text_without_directions, directions
 
 
@@ -199,7 +250,7 @@ class TheBigBangTheory(Plugin):
                 if line:
                     yield line
 
-    def manual_transcript(self, url=None, episode=None, debug=True, **kwargs):
+    def manual_transcript_raw(self, url=None, episode=None, debug=True, **kwargs):
 
         SPEAKER_MAPPING = {
             'abby': ['abby',],
@@ -275,7 +326,7 @@ class TheBigBangTheory(Plugin):
             'steph': ['steph',],
             'steve_wozniak': ['steve wozniak',],
             'stuart': ['stuart',],
-            'summer': ['summer',],            
+            'summer': ['summer',],
             'toby': ['toby',],
             'todd': ['todd',],
             'tom': ['tom',],
@@ -315,7 +366,7 @@ class TheBigBangTheory(Plugin):
             # try to match xxxxx: yyyyyy
             REGEXP_DIALOGUE = '\A\s*([^:]+?)\s*:\s*(.*)\Z'
             m = re.match(REGEXP_DIALOGUE, text)
-            
+
             if not m:
                 # (They sit ...).
                 # (Leonard starts rattling.)
@@ -332,7 +383,7 @@ class TheBigBangTheory(Plugin):
                 if debug:
                     print "SKIPPING: %s" % repr(text)
 
-                continue             
+                continue
 
             # if there is a match, we are in one of the following situations:
             # Scene: blah blah blah
@@ -365,7 +416,7 @@ class TheBigBangTheory(Plugin):
                 # is correctly connected to end of previous scene
                 if tspeech:
                     G.add_edge(tspeech, tscene)
-                
+
                 # update end of previous scene/speech
                 tscene = t2
                 tspeech = t1
@@ -376,7 +427,7 @@ class TheBigBangTheory(Plugin):
             elif left in {'story', 'teleplay'}:
                 continue
 
-            # that's what we are really looking for: 
+            # that's what we are really looking for:
             # speaker_name: speech
             else:
 
@@ -397,7 +448,7 @@ class TheBigBangTheory(Plugin):
                 # debug
                 # if speaker not in speaker_mapping:
                 #     warnings.warn('no mapping for speaker "%s"' % speaker)
-                
+
                 # build annotation data
                 # (with directions only if they exist)
                 data = {

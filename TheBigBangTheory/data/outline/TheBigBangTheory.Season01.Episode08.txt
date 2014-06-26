@@ -1,0 +1,19 @@
+0 243 location Living room
+0 243 event Howard and Rajesh enter with Rajesh's parents talking live from India on the screen of his laptop. They tell Rajesh that they arranged a date for him.
+243 266 jingle
+266 454 location Living room
+266 393 event Rajesh got a message from Lalita Gupta, his arranged date. He is too shy to call her back, so Howard calls and arranges a date for them on Friday.
+393 454 event Penny enters and tells the guys she needs to practice mixing drinks and asks if they would like to serve as "guinea pigs".
+454 456 jingle
+456 669 location Penny's apartment
+456 669 event Penny mixes drinks for the guys to try and they discover that Rajesh can talk after having alcohol.
+669 950 location Cheesecake Factory, Friday evening
+669 744 event Rajesh is talking to his date, Lalita and is rather obnoxious.
+744 820 event Sheldon turns up and describes Lalita as the embodiment of his beloved child book character "Princess Panchali".
+820 950 event When Sheldon tells Lalita about the resemblance in a rather charming way, she's totally smitten by him and leaves Rajesh to have dinner with Sheldon.
+950 952 jingle
+952 1096 location Living room
+952 1096 event Rajesh tries to explain to his parents why his date went wrong. Sheldon enters and does not understand how he ruined Rajesh's date.
+1096 1136 location Cheesecake Factory
+1096 1136 event Sheldon is singing and playing the piano after Penny mixed him a "slutty" Virgin Cuba Libre. Leonard sits at the bar, astonished at Penny, who tells him, "Hey, you do your little experiments, I do mine."
+1136 1164 credits

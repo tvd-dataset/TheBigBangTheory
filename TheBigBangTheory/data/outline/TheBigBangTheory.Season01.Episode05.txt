@@ -1,0 +1,32 @@
+0 204 location Cheesecake Factory
+0 204 event The boys recreate the Battle of Gettysburg using condiment bottles and salt shakers, during which Leslie Winkle drops by and asks Leonard if he'll join the Physics Department string quartet.
+204 206 jingle
+206 267 location Stairway
+206 267 event Leonard tries to use logic to figure out Penny's feelings for him and Sheldon isn't interested.
+267 291 jingle
+291 443 location Living room
+291 443 event String quartet practice, after which Leslie seduces Leonard.
+443 445 jingle
+445 472 location Hallway
+445 472 event Sheldon knocks on Penny's door and asks for help with semiotics.
+472 513 location Outside Leonard's bedroom
+472 513 event Penny explains the necktie on the doorknob to Sheldon.
+513 642 location Living room
+513 642 event Penny asks who's in Leonard's bedroom with him. At that moment, we hear Leslie call Leonard a "magnificent beast." She can't help Sheldon know what the proper protocol is for handling this situation because, as she points out, she's usually "on the other side of the tie."
+642 655 location The next morning, Leonard's bedroom
+642 655 event Leonard wakes up, sees Leslie in bed next to him, smiles.
+655 770 location Living room
+655 770 event Sheldon wakes up after having apparently slept on the couch all night, & notices that someone has changed something on his board, and panics. He calls Leonard, who doesn't know what happened, but notes that the change fixes the problem Sheldon has been having. Leslie saunters out and announces that she fixed his equations. She leaves as he sputters {"I have to go. When you think of an adjective, text me"}.
+770 771 jingle
+771 835 location Hallway
+771 835 event Penny congratulates Leonard.
+835 895 location Stairway
+835 895 event Leonard speculates about what Penny meant by what she said, and Sheldon still doesn't care.
+895 896 jingle
+896 999 location Lab
+896 999 event Leonard discovers that Leslie only used him and isn't really interested in a relationship.
+999 1030 location Hallway outside the lab
+999 1030 event Howard and Raj congratulate Leonard and tell him that his exploits are all over the blogosphere (thanks to Howard).
+1030 1136 location Cheesecake Factory
+1030 1136 event Sheldon decides that they will make this their regular Tuesday night haunt. Penny hears from Leonard that things aren't working out with Leslie and tells him she's sorry ... but smiles as she walks away from the table.
+1136 1164 credits

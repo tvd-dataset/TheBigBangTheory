@@ -1,0 +1,37 @@
+0 16 location Hallway outside High-IQ Sperm Bank
+0 20 event Sheldon tells his "good idea for a T-shirt".
+16 150 location High-IQ Sperm Bank
+20 150 event Sheldon and Leonard consider donating sperm, but back out.
+150 152 jingle
+152 183 location Stairs
+152 183 event Sheldon and Leonard head back to the apartment, discussing the height of stair steps.
+183 252 location Hallway outside apartments
+183 252 event They discover they have a new neighbor
+252 287 location Living room
+252 287 event Leonard decides to invite Penny over for lunch.
+287 347 location Hallway
+287 347 event Leonard invites Penny over, although the invitation includes an ill-advised mention of bowel movements.
+347 370 credits Titles and opening theme
+370 876 location Living room
+370 788 event They get to know each other over curry.
+788 876 event Howard and Raj turn up, and are surprised to learn that there's a woman in the shower.
+876 911 location Bathroom
+876 911 event Leonard fixes the shower for Penny, then agrees to help her out getting her TV from her ex-boyfriend's apartment.
+911 989 location Car
+911 989 event Sheldon and Leonard are travelling to Kurt's apartment, discussing the task ahead.
+989 1012 location Living room
+989 1012 event Penny hangs out with Raj and Howard.
+1012 1076 location Kurt's apartment building lobby
+1012 1076 event Leonard and Sheldon try to work out how to get into the building.
+1076 1106 location Kurt's apartment building hallway
+1076 1106 event Kurt intimidates Leonard and Sheldon.
+1106 1124 location Kurt's apartment building lobby
+1106 1124 event Leonard and Sheldon walk back out without their pants.
+1124 1126 jingle
+1126 1164 location Stairway
+1126 1164 event Leonard admits defeat, says Penny is out of his league.
+1164 1246 location Living room
+1164 1246 event A shocked and contrite Penny offers to take them all out to dinner.
+1246 1292 location Car
+1246 1292 event They all head off to dinner, with Howard trying to impress Penny by singing, and Raj unable to speak.
+1292 1320 credits

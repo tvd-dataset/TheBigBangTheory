@@ -1,0 +1,23 @@
+0 147 location Living room, Friday evening
+0 141 event The guys want to start Halo Night when Penny enters and tells them about her promiscuous friend Christy that has come to visit her.
+141 147 event Howard introduces himself to Christy and appears into Penny's apartment.
+147 171 jingle
+171 555 location Living room, Friday evening
+171 328 event Penny joins Halo Night as replacement for Howard. Sheldon is very annoyed when Penny beats him.
+328 555 event Penny later asks if she could stay because Christy and Howard have sex in her bedroom. Sheldon is very opposed to this change in his routine.
+555 557 jingle
+557 798 location Living room, Saturday morning
+557 627 event Sheldon cannot cope with the fact that Penny sleeping on the couch prevents him from watching Doctor Who.
+627 798 event Howard enters in Penny's dressing gown, and Penny confronts Christy that she should find another place to stay. Howard proposes she stays with him. He doesn't care that Christy is obviously just using him.
+798 934 location Szechuan Palace
+798 934 event Sheldon refuses to have the guys' usual Chinese meal because he finds it impossible to divide the order by three instead of four.
+934 935 jingle
+935 1068 location Hallway in front of apartment, Wednesday evening
+935 1046 event The guys invite Penny to join Halo Night, because Howard is still occupied with Christy but Penny goes dancing with a girlfriend.
+1046 1068 event Sheldon decides to call Howard to join them and "restore balance".
+1068 1069 jingle
+1069 1144 location In front of Howard's house
+1069 1144 event The guys hear Howard's mother and Christy arguing, leading to Christy leaving. Howard flees outside and joins the rest of the group for Halo Night.
+1144 1193 location Living room 
+1144 1193 event The guys are playing Halo when Penny enters with three girlfriends. The guys are so caught up in the game, they don't hear Penny come in & make a faux offer of sex to the guys.
+1193 1220 credits

@@ -1,0 +1,45 @@
+0 29 location Living room
+0 29 event Leonard and Sheldon talk about time travel while preparing to leave for a departmental party.
+29 91 location Stairway
+29 91 event Sheldon explains why he he doesn't consider the new head of the department a distinguished scientist.
+91 92 jingle
+92 147 location Room in Physics department
+92 147 event The guys welcome Dr. Eric Gablehauser, the new head of the Physics department. Sheldon, not knowing how to express himself any better, insults him.
+147 164 location Stairway
+147 164 event Sheldon has been fired.
+164 186 jingle
+186 309 location Living room
+186 280 event Sheldon does an experiment involving scrambled eggs. He tells Leonard that he wouldn't apologize to his boss to get his job back.
+280 309 event Penny comes around and asks whether the guys need something from the supermarket. Sheldon decides to join her.
+309 311 jingle
+311 396 location Penny's car
+311 396 event Sheldon and Penny converse on the way to the supermarket.
+396 470 location Supermarket
+396 470 event Sheldon unintentionally puts Penny's patience to a test with various comments about the things she intends to buy.
+470 471 jingle
+471 527 location Hallway in front of apartment
+471 527 event Penny is deeply annoyed about the shopping trip, while Sheldon enjoyed it.
+527 528 jingle
+528 607 location Living room
+528 607 event Leonard comes home and Sheldon proposes his idea of luminous fish.
+607 609 jingle
+609 618 location Stairway, three weeks later
+609 618 event Leonard explains to Sheldon's mother why he asked her to come.
+618 944 location Living room
+618 722 event Sheldon has gotten himself a loom and is annoyed that Leonard called his mother. He locks himself in his room.
+722 723 jingle 
+723 908 event Sheldon's mother cooks for everyone and tells Leonard, Rajesh, Howard and Penny about Sheldon's childhood.
+908 944 event Sheldon timidly comes into the living room but runs back into his room when Leonard confronts him, despite Mary's advice to treat him like a baby deer.
+944 945 jingle
+945 1027 location Sheldon's bedroom
+945 1027 event Sheldon's mother tells Sheldon that she will take him to apologize to his boss, and that she won't have any argument.
+1027 1045 location Living room
+1027 1045 event Sheldon's mother tells Leonard the problem was solved.
+1045 1111 location Office of Dr. Eric Gablehauser at the Physics department
+1045 1111 event Sheldon apologizes and gets his job back. Eric Gablehauser is taken with Sheldon's mother.
+1111 1130 location Hallway in front of Dr. Eric Gablehauser's office
+1111 1130 event Leonard wants to know how the talk with Gablehauser went.
+1130 1163 location Sheldon's bedroom
+1130 1154 event Sheldon's mother puts Sheldon to bed and tells him how proud she was. He asks if Dr. Eric Gablehauser is "going to be his new daddy."
+1154 1163 event A bowl with luminous fish can be seen on his bedside table.
+1163 1191 credits

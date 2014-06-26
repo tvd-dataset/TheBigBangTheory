@@ -33,16 +33,15 @@ language: "en"
 # number of episodes per season
 episodes: [17, 23, 23, 24, 24]
 
-# resources that can be downloaded from the web
-www:
+resources:
 
     speaker:
 
         description: >
             Manual annotation of speech turns 
-            (including 5 main characters and a 6th "other" class)
+            (including 5 main characters, a 6th "other" class)
 
-        type: annotation graph
+        type: annotation
 
         source: |
             @inproceedings{Tapaswi2012
@@ -54,25 +53,54 @@ www:
             }
 
         url:
-            - {season: 1, episode: 1, url: "data/speaker/TheBigBangTheory.Season01.Episode01.json"}
-            - {season: 1, episode: 2, url: "data/speaker/TheBigBangTheory.Season01.Episode02.json"}
-            - {season: 1, episode: 3, url: "data/speaker/TheBigBangTheory.Season01.Episode03.json"}
-            - {season: 1, episode: 4, url: "data/speaker/TheBigBangTheory.Season01.Episode04.json"}
-            - {season: 1, episode: 5, url: "data/speaker/TheBigBangTheory.Season01.Episode05.json"}
-            - {season: 1, episode: 6, url: "data/speaker/TheBigBangTheory.Season01.Episode06.json"}
+            - {season: 1, episode: 1, url: "data/speaker/TheBigBangTheory.Season01.Episode01.txt"}
+            - {season: 1, episode: 2, url: "data/speaker/TheBigBangTheory.Season01.Episode02.txt"}
+            - {season: 1, episode: 3, url: "data/speaker/TheBigBangTheory.Season01.Episode03.txt"}
+            - {season: 1, episode: 4, url: "data/speaker/TheBigBangTheory.Season01.Episode04.txt"}
+            - {season: 1, episode: 5, url: "data/speaker/TheBigBangTheory.Season01.Episode05.txt"}
+            - {season: 1, episode: 6, url: "data/speaker/TheBigBangTheory.Season01.Episode06.txt"}
 
     outline:
 
         description: >
-            Episode outline (including scene location and short event description)
+            Timed episode outline (including scene location and short event description)
 
-        type: annotation graph
+        type: transcription
 
         source: |
             @misc{the-big-bang-theory.com,
                 title = {{The Big Bang Theory Wiki}},
                 howpublished = \url{http://wiki.the-big-bang-theory.com/}
             }
+
+        license: GNU Free Documentation License 1.3
+
+        url:
+            - {season: 1, episode: 1, url: "data/outline/TheBigBangTheory.Season01.Episode01.txt"}
+            - {season: 1, episode: 2, url: "data/outline/TheBigBangTheory.Season01.Episode02.txt"}
+            - {season: 1, episode: 3, url: "data/outline/TheBigBangTheory.Season01.Episode03.txt"}
+            - {season: 1, episode: 4, url: "data/outline/TheBigBangTheory.Season01.Episode04.txt"}
+            - {season: 1, episode: 5, url: "data/outline/TheBigBangTheory.Season01.Episode05.txt"}
+            - {season: 1, episode: 6, url: "data/outline/TheBigBangTheory.Season01.Episode06.txt"}
+            - {season: 1, episode: 7, url: "data/outline/TheBigBangTheory.Season01.Episode07.txt"}
+            - {season: 1, episode: 8, url: "data/outline/TheBigBangTheory.Season01.Episode08.txt"}
+            - {season: 1, episode: 9, url: "data/outline/TheBigBangTheory.Season01.Episode09.txt"}
+            - {season: 1, episode: 10, url: "data/outline/TheBigBangTheory.Season01.Episode10.txt"}
+
+    outline_raw:
+
+        description: >
+            Raw episode outline (including scene location and short event description)
+
+        type: transcription
+
+        source: |
+            @misc{the-big-bang-theory.com,
+                title = {{The Big Bang Theory Wiki}},
+                howpublished = \url{http://wiki.the-big-bang-theory.com/}
+            }
+
+        license: GNU Free Documentation License 1.3
 
         url:
             - {season: 1, episode: 1, url: "http://wiki.the-big-bang-theory.com/wiki/0101"}
@@ -145,7 +173,7 @@ www:
             - {season: 4, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0407"}
             - {season: 4, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0409"}
 
-    manual_transcript:
+    manual_transcript_raw:
 
         description: >
             Manual transcription of dialogues with speaker name.
@@ -156,7 +184,7 @@ www:
                 howpublished = \url{http://bigbangtrans.wordpress.com/}
             }
 
-        type: annotation graph
+        type: transcription
 
         url:
             - {season: 1, episode: 1, url: "http://bigbangtrans.wordpress.com/series-1-episode-1-pilot-episode/"}

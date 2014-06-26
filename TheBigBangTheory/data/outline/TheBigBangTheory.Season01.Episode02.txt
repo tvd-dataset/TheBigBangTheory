@@ -1,0 +1,32 @@
+0 36 location Living room
+0 36 event The four guys have take aways when someone knocks on the door.
+36 215 location Hallway outside apartments
+36 125 event Penny gives Leonard the key to her apartment.
+125 215 event The four guys get into a discussion about Superman's flight skills in front of Penny.
+215 238 jingle
+238 312 location Apartment building ground floor
+238 312 event Leonard and Sheldon try to figure out how to get Penny's furniture up the stairs.
+312 363 location Stairway
+312 363 event Leonard and Sheldon push Penny's furniture up the stairs, discussing Leonard's motivations for helping Penny
+363 482 location 4B Penny's apartment
+363 449 event Sheldon is shocked about the messy state of Penny's apartment and starts to clean.
+449 482 event Penny returns and the guys leave.
+482 483 jingle
+483 496 location Leonard's bedroom
+483 496 event Leonard wakes up at night.
+496 517 location Living room
+496 517 event Leonard walks into the living room holding a lightsaber for a flashlight. He finds the apartment door open.
+517 628 location 4B Penny's apartment
+517 628 event Leonard tries to stop Sheldon cleaning Penny's apartment while she is sleeping, but ends up helping him.
+628 845 location Living room
+628 708 event Leonard and Sheldon have breakfast.
+708 845 event Penny storms into their apartment and is furious.
+845 846 jingle
+846 931 location Stairway
+846 931 event Penny talks to Rajesh.
+931 1004 location Living room
+931 1004 event Rajesh surprises Leonard, Sheldon and Howard by telling them that he chatted to Penny and that she hugged him.
+1004 1005 jingle
+1005 1188 location Hallway outside apartments
+1005 1188 event Leonard apologizes to Penny who accepts it, hugging Leonard.
+1188 1216 credits
