@@ -225,19 +225,19 @@ class TheBigBangTheory(Plugin):
         text_without_directions = u''
 
         while text:
-            
+
             m = re.match(REGEXP_DIRECTION, text)
-            
+
             if not m:
                 text_without_directions += text
                 break
-        
+
             else:
                 before, direction, after = m.groups()
                 directions.append(direction)
                 text_without_directions += before
                 text = after
-        
+
         return text_without_directions, directions
 
 
@@ -326,7 +326,7 @@ class TheBigBangTheory(Plugin):
             'steph': ['steph',],
             'steve_wozniak': ['steve wozniak',],
             'stuart': ['stuart',],
-            'summer': ['summer',],            
+            'summer': ['summer',],
             'toby': ['toby',],
             'todd': ['todd',],
             'tom': ['tom',],
@@ -366,7 +366,7 @@ class TheBigBangTheory(Plugin):
             # try to match xxxxx: yyyyyy
             REGEXP_DIALOGUE = '\A\s*([^:]+?)\s*:\s*(.*)\Z'
             m = re.match(REGEXP_DIALOGUE, text)
-            
+
             if not m:
                 # (They sit ...).
                 # (Leonard starts rattling.)
@@ -383,7 +383,7 @@ class TheBigBangTheory(Plugin):
                 if debug:
                     print "SKIPPING: %s" % repr(text)
 
-                continue             
+                continue
 
             # if there is a match, we are in one of the following situations:
             # Scene: blah blah blah
@@ -416,7 +416,7 @@ class TheBigBangTheory(Plugin):
                 # is correctly connected to end of previous scene
                 if tspeech:
                     G.add_edge(tspeech, tscene)
-                
+
                 # update end of previous scene/speech
                 tscene = t2
                 tspeech = t1
@@ -427,7 +427,7 @@ class TheBigBangTheory(Plugin):
             elif left in {'story', 'teleplay'}:
                 continue
 
-            # that's what we are really looking for: 
+            # that's what we are really looking for:
             # speaker_name: speech
             else:
 
@@ -448,7 +448,7 @@ class TheBigBangTheory(Plugin):
                 # debug
                 # if speaker not in speaker_mapping:
                 #     warnings.warn('no mapping for speaker "%s"' % speaker)
-                
+
                 # build annotation data
                 # (with directions only if they exist)
                 data = {
