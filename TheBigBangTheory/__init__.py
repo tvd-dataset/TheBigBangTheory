@@ -250,7 +250,7 @@ class TheBigBangTheory(Plugin):
                 if line:
                     yield line
 
-    def manual_transcript(self, url=None, episode=None, debug=True, **kwargs):
+    def manual_transcript_raw(self, url=None, episode=None, debug=True, **kwargs):
 
         SPEAKER_MAPPING = {
             'abby': ['abby',],

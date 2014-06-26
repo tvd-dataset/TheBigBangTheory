@@ -173,7 +173,7 @@ resources:
             - {season: 4, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0407"}
             - {season: 4, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0409"}
 
-    manual_transcript:
+    manual_transcript_raw:
 
         description: >
             Manual transcription of dialogues with speaker name.
@@ -184,7 +184,7 @@ resources:
                 howpublished = \url{http://bigbangtrans.wordpress.com/}
             }
 
-        type: annotation graph
+        type: transcription
 
         url:
             - {season: 1, episode: 1, url: "http://bigbangtrans.wordpress.com/series-1-episode-1-pilot-episode/"}
