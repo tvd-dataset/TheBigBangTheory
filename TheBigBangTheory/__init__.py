@@ -67,7 +67,7 @@ class TheBigBangTheory(Plugin):
 
         return annotation
 
-    def outline_raw(self, url=None, episode=None, **kwargs):
+    def outline_www(self, url=None, episode=None, **kwargs):
         """
         Parameters
         ----------
@@ -248,7 +248,7 @@ class TheBigBangTheory(Plugin):
                 if line:
                     yield line
 
-    def manual_transcript_raw(self, url=None, episode=None, debug=True, **kwargs):
+    def transcript_www(self, url=None, episode=None, debug=True, **kwargs):
 
         SPEAKER_MAPPING = {
             'abby': ['abby', ],

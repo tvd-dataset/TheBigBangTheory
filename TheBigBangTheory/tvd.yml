@@ -87,7 +87,7 @@ resources:
             - {season: 1, episode: 9, url: "data/outline/TheBigBangTheory.Season01.Episode09.txt"}
             - {season: 1, episode: 10, url: "data/outline/TheBigBangTheory.Season01.Episode10.txt"}
 
-    outline_raw:
+    outline_www:
 
         description: >
             Raw episode outline (including scene location and short event description)
@@ -173,7 +173,7 @@ resources:
             - {season: 4, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0407"}
             - {season: 4, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0409"}
 
-    manual_transcript_raw:
+    transcript_www:
 
         description: >
             Manual transcription of dialogues with speaker name.
@@ -335,3 +335,4 @@ resources:
             - {season: 7, episode: 12, url: "http://bigbangtrans.wordpress.com/series-7-episode-12-the-hesitation-ramification/"}
             - {season: 7, episode: 13, url: "http://bigbangtrans.wordpress.com/series-7-episode-13-the-occupation-recalibration/"}
             - {season: 7, episode: 14, url: "http://bigbangtrans.wordpress.com/series-7-episode-14-the-convention-conundrum/"}
+
