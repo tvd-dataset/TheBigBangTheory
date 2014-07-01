@@ -35,9 +35,10 @@ from tvd import T, TStart, TEnd, Transcription
 from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
+from pyannote.parser.ctm import CTMParser, IterLinesMixin
 
 
-class TheBigBangTheory(Plugin):
+class TheBigBangTheory(Plugin, IterLinesMixin):
 
     def speaker(self, url=None, episode=None, **kwargs):
 
@@ -474,6 +475,71 @@ class TheBigBangTheory(Plugin):
         G.add_edge(tscene, tend)
 
         return G
+
+    def transcript(self, url=None, episode=None, **kwargs):
+
+        path = resource_filename(self.__class__.__name__, url)
+        transcription = Transcription(episode=episode)
+
+        # previous scene end time
+        e_scene = None
+
+        # previous dialogue end time
+        e_dialogue = None
+
+        for line in self.iterlines(path):
+
+            tokens = line.split()
+            left = tokens[0].strip()
+            right = ' '.join(tokens[1:]).strip()
+
+            # new scene
+            if left == 'SCENE':
+                scene = right
+
+                # connect previous dialogue line with scene end time
+                if e_dialogue is not None:
+                    transcription.add_edge(e_dialogue, e_scene)
+
+                # new scene
+                _s_scene, _e_scene = T(), T()
+                transcription.add_edge(_s_scene, _e_scene, scene=scene)
+
+                # connect scene with previous scene
+                if e_scene is not None:
+                    transcription.add_edge(e_scene, _s_scene)
+
+                # update previous scene start/end time
+                s_scene, e_scene = _s_scene, _e_scene
+
+                # artifically set previous dialogue end time
+                e_dialogue = s_scene
+
+            # new dialogue line
+            else:
+                speaker = left
+                speech = right
+
+                # new dialogue
+                _s_dialogue, _e_dialogue = T(), T()
+                transcription.add_edge(_s_dialogue, _e_dialogue,
+                                       speaker=speaker, speech=speech)
+
+                # connect dialogue with previous dialogue
+                transcription.add_edge(e_dialogue, _s_dialogue)
+
+                # update previous dialogue start/end time
+                s_dialogue, e_dialogue = _s_dialogue, _e_dialogue
+
+        # connect previous dialogue line with scene end time
+        transcription.add_edge(e_dialogue, e_scene)
+
+        return transcription
+
+    def transcript_aligned(self, url=None, episode=None, **kwargs):
+        path = resource_filename(self.__class__.__name__, url)
+        return CTMParser().get_transcription(path)
+
 
 from ._version import get_versions
 __version__ = get_versions()['version']
