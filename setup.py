@@ -45,7 +45,8 @@ REQUIRES_TVD = 'tvd >= 0.6'
 
 # Additional package dependency
 REQUIRES_OTHER = [
-    'beautifulsoup4>=4.3.2',
+    'beautifulsoup4 >= 4.3.2',
+    'pyannote.parser >= 0.0.2'
 ]
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
