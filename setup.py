@@ -79,6 +79,8 @@ setup(
             'tvd.yml',
             'data/speaker/*',
             'data/outline/*',
+            'data/transcript/raw/*',
+            'data/transcript/ctm/*',
         ],
     },
     include_package_data=True,
