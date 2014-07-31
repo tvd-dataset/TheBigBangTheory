@@ -1,3 +1,8 @@
+### Version 0.8 (2014-07-31)
+
+  - feat: add 'transcript' and 'transcript_aligned'
+  - chore: support for tvd 0.7
+
 ### Version 0.7 (2014-06-26)
 
   - chore: support for tvd 0.6
