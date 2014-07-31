@@ -35,10 +35,10 @@ from tvd import T, TStart, TEnd, Transcription
 from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
-import warnings
+from pyannote.parser.ctm import CTMParser, IterLinesMixin
 
 
-class TheBigBangTheory(Plugin):
+class TheBigBangTheory(Plugin, IterLinesMixin):
 
     def speaker(self, url=None, episode=None, **kwargs):
 
@@ -68,7 +68,7 @@ class TheBigBangTheory(Plugin):
 
         return annotation
 
-    def outline_raw(self, url=None, episode=None, **kwargs):
+    def outline_www(self, url=None, episode=None, **kwargs):
         """
         Parameters
         ----------
@@ -89,7 +89,7 @@ class TheBigBangTheory(Plugin):
         r = re.sub('<script[^<]+</script>', '', r)
         r = re.sub('<style[^<]+</style>', '', r)
         r = re.sub('<div[^<]+</div>', '', r)
-        r = re.sub('<li>', '@EVENT', r) # Alternate way to detect event,
+        r = re.sub('<li>', '@EVENT', r)  # Alternate way to detect event,
                     # without depending on 'IXV.' etc.
                     # -> Events are always items in a list.
         r = re.sub('<[^>]+>', '', r)
@@ -106,7 +106,7 @@ class TheBigBangTheory(Plugin):
 
         for line in r:
 
-            line = h.unescape(line) # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
+            line = h.unescape(line)  # Decode HTML code e.g. "don&#8217;t feed the .." to Unicode.
             if re.search('\A[ \t\n\r]*\Z', line):  # Empty line.
                 continue
 
@@ -140,7 +140,7 @@ class TheBigBangTheory(Plugin):
                         '\A[ \t]*Still to come[ \t]*\Z',
                         line,
                         re.IGNORECASE)
-                  ):
+                ):
                     break
 
                 # Lines to be ignored:
@@ -159,7 +159,7 @@ class TheBigBangTheory(Plugin):
                         re.search('credit', line, re.IGNORECASE) or
                         re.search('theme', line, re.IGNORECASE)
                     ):
-                        continue # Assume it's 'Titles and opening theme' or something
+                        continue  # Assume it's 'Titles and opening theme' or something
                          # similar. Ignore.
 
                     # Finish the edge for previous location section.
@@ -167,7 +167,7 @@ class TheBigBangTheory(Plugin):
                         G.add_edge(t_event_prev, t_location_prev)
 
                     location_ = re.sub(
-                        '\A[ \t]*[IVX]+[\.:]+[ \t]*', '', line) # Remove roman numeral.
+                        '\A[ \t]*[IVX]+[\.:]+[ \t]*', '', line)  # Remove roman numeral.
                     t_location_start = T()
                     G.add_edge(t_location_prev, t_location_start)
                     t_location_stop = T()
@@ -240,7 +240,6 @@ class TheBigBangTheory(Plugin):
 
         return text_without_directions, directions
 
-
     # helper function to iterate over weird-structured manual transcript lines
     @staticmethod
     def _manual_transcript_line_iterator(div):
@@ -250,90 +249,90 @@ class TheBigBangTheory(Plugin):
                 if line:
                     yield line
 
-    def manual_transcript_raw(self, url=None, episode=None, debug=True, **kwargs):
+    def transcript_www(self, url=None, episode=None, debug=True, **kwargs):
 
         SPEAKER_MAPPING = {
-            'abby': ['abby',],
-            'alice': ['alice',],
-            'alicia': ['alicia',],
-            'amy': ['amy',],
-            'angela': ['angela',],
+            'abby': ['abby', ],
+            'alice': ['alice', ],
+            'alicia': ['alicia', ],
+            'amy': ['amy', ],
+            'angela': ['angela', ],
             'barry_kripke': ['barry', 'barry kripke', 'kripke'],
             'bernadette': ['bermadette', 'bernadette', ],
-            'bethany': ['bethany',],
-            'beverley': ['beverley',],
+            'bethany': ['bethany', ],
+            'beverley': ['beverley', ],
             'brent_spiner': ['brent', 'brent spiner'],
-            'charlie_sheen': ['charlie sheen',],
-            'christie': ['christie',],
-            'dale': ['dale',],
-            'david': ['david',],
-            'dennis': ['dennis',],
-            'dimitri': ['dimitri',],
-            'doug': ['doug',],
-            'dr_gablehouser': ['gablehauser', 'gablehouser', 'dr gablehouser',],
-            'dr_greene': ['dr. brian greene', 'greene',],
-            'dr_hofstadter': ["leonard's mother", 'dr hofstadter',],
-            'dr_koothrappali': ['dr koothrappali',],
-            'dr_massimino': ['dr massimino',],
-            'dr_millstone': ['dr millstone',],
+            'charlie_sheen': ['charlie sheen', ],
+            'christie': ['christie', ],
+            'dale': ['dale', ],
+            'david': ['david', ],
+            'dennis': ['dennis', ],
+            'dimitri': ['dimitri', ],
+            'doug': ['doug', ],
+            'dr_gablehouser': ['gablehauser', 'gablehouser', 'dr gablehouser', ],
+            'dr_greene': ['dr. brian greene', 'greene', ],
+            'dr_hofstadter': ["leonard's mother", 'dr hofstadter', ],
+            'dr_koothrappali': ['dr koothrappali', ],
+            'dr_massimino': ['dr massimino', ],
+            'dr_millstone': ['dr millstone', ],
             'dr_seibert': ['seibert', 'siebert', 'dr. seibert', ],
-            'dr_tyson': ['dr tyson',],
-            'elizabeth': ['elizabeth',],
-            'eric': ['eric',],
-            'george_smoot': ['george smoot',],
-            'george_takei': ['george takei',],
-            'glenn': ['glenn',],
-            'hawking': ['hawking',],
-            'houston': ['houston',],
-            'howard': ['howard', 'past howard',],
+            'dr_tyson': ['dr tyson', ],
+            'elizabeth': ['elizabeth', ],
+            'eric': ['eric', ],
+            'george_smoot': ['george smoot', ],
+            'george_takei': ['george takei', ],
+            'glenn': ['glenn', ],
+            'hawking': ['hawking', ],
+            'houston': ['houston', ],
+            'howard': ['howard', 'past howard', ],
             'ira': ['ira', ],
-            'jimmy': ['jimmy',],
-            'joy': ['joy',],
-            'joyce_kim': ['joyce kim',],
+            'jimmy': ['jimmy', ],
+            'joy': ['joy', ],
+            'joyce_kim': ['joyce kim', ],
             'kathy_sackhoff': ['katee', 'katee sackhoff', 'kathy'],
-            'kevin': ['kevin',],
-            'kurt': ['kurt',],
-            'lakshmi': ['lakshmi',],
-            'lalita': ['lalita',],
-            'laura': ['laura',],
+            'kevin': ['kevin', ],
+            'kurt': ['kurt', ],
+            'lakshmi': ['lakshmi', ],
+            'lalita': ['lalita', ],
+            'laura': ['laura', ],
             'leonard': ['leonard', 'past leonard', ],
             'leslie_winkle': ['leslie winkle', 'leslie', 'lesley'],
             'martha': ['martha', ],
-            'mie_massimino': ['mike', 'mike_massimino', 'massimino',],
+            'mie_massimino': ['mike', 'mike_massimino', 'massimino', ],
             'michaela': ['michaela', ],
-            'mike': ['mike',],
-            'missy': ['missy',],
-            'mr_rostenkowski': ['mr rostenkowski', 'mr. rostenkowski',],
-            'mrs_cooper': ['mrs cooper',],
-            'mrs_fowler': ['mrs fowler',],
-            'mrs_gunderson': ['mrs gunderson',],
-            'mrs_koothrappali': ['mrs koothrappali',],
+            'mike': ['mike', ],
+            'missy': ['missy', ],
+            'mr_rostenkowski': ['mr rostenkowski', 'mr. rostenkowski', ],
+            'mrs_cooper': ['mrs cooper', ],
+            'mrs_fowler': ['mrs fowler', ],
+            'mrs_gunderson': ['mrs gunderson', ],
+            'mrs_koothrappali': ['mrs koothrappali', ],
             'mrs_latham': ['mrs latham', ],
-            'mrs_wolowitz': ['mrs wolowitz', "howard's mother",],
-            'page': ['page',],
-            'penny': ['penny', 'past penny',],
-            'penny_dad': ["penny's dad",],
+            'mrs_wolowitz': ['mrs wolowitz', "howard's mother", ],
+            'page': ['page', ],
+            'penny': ['penny', 'past penny', ],
+            'penny_dad': ["penny's dad", ],
             'pr_crawley': ['prof crawley', ],
-            'pr_goldfarb': ['goldfarb',],
-            'pr_laughlin': ['prof laughlin',],
+            'pr_goldfarb': ['goldfarb', ],
+            'pr_laughlin': ['prof laughlin', ],
             'priya': ['priya', ],
-            'raj': ['raj', 'past raj', 'rai',],
-            'roeger': ['roeger',],
-            'rothman': ['rothman',],
-            'sarah': ['sarah',],
+            'raj': ['raj', 'past raj', 'rai', ],
+            'roeger': ['roeger', ],
+            'rothman': ['rothman', ],
+            'sarah': ['sarah', ],
             'sheldon': ['sheldon', 'sgeldon', 'sheldon on laptop screen', "sheldon's voice", 'past sheldon', 'on-screen sheldon', ],
-            'stan_lee': ['stan lee',],
-            'steph': ['steph',],
-            'steve_wozniak': ['steve wozniak',],
-            'stuart': ['stuart',],
-            'summer': ['summer',],
-            'toby': ['toby',],
-            'todd': ['todd',],
-            'tom': ['tom',],
-            'venkatesh': ['venkatesh',],
-            'wil_wheaton': ['wil', 'wil wheaton',],
-            'wyatt': ['wyatt',],
-            'zack': ['zack',],
+            'stan_lee': ['stan lee', ],
+            'steph': ['steph', ],
+            'steve_wozniak': ['steve wozniak', ],
+            'stuart': ['stuart', ],
+            'summer': ['summer', ],
+            'toby': ['toby', ],
+            'todd': ['todd', ],
+            'tom': ['tom', ],
+            'venkatesh': ['venkatesh', ],
+            'wil_wheaton': ['wil', 'wil wheaton', ],
+            'wyatt': ['wyatt', ],
+            'zack': ['zack', ],
         }
 
         speaker_mapping = {
@@ -469,7 +468,6 @@ class TheBigBangTheory(Plugin):
                 # update end of previous speech turn
                 tspeech = t2
 
-
         # make sure last speech turn is correctly connected to end of last scene
         G.add_edge(tspeech, tscene)
 
@@ -477,6 +475,71 @@ class TheBigBangTheory(Plugin):
         G.add_edge(tscene, tend)
 
         return G
+
+    def transcript(self, url=None, episode=None, **kwargs):
+
+        path = resource_filename(self.__class__.__name__, url)
+        transcription = Transcription(episode=episode)
+
+        # previous scene end time
+        e_scene = None
+
+        # previous dialogue end time
+        e_dialogue = None
+
+        for line in self.iterlines(path):
+
+            tokens = line.split()
+            left = tokens[0].strip()
+            right = ' '.join(tokens[1:]).strip()
+
+            # new scene
+            if left == 'SCENE':
+                scene = right
+
+                # connect previous dialogue line with scene end time
+                if e_dialogue is not None:
+                    transcription.add_edge(e_dialogue, e_scene)
+
+                # new scene
+                _s_scene, _e_scene = T(), T()
+                transcription.add_edge(_s_scene, _e_scene, scene=scene)
+
+                # connect scene with previous scene
+                if e_scene is not None:
+                    transcription.add_edge(e_scene, _s_scene)
+
+                # update previous scene start/end time
+                s_scene, e_scene = _s_scene, _e_scene
+
+                # artifically set previous dialogue end time
+                e_dialogue = s_scene
+
+            # new dialogue line
+            else:
+                speaker = left
+                speech = right
+
+                # new dialogue
+                _s_dialogue, _e_dialogue = T(), T()
+                transcription.add_edge(_s_dialogue, _e_dialogue,
+                                       speaker=speaker, speech=speech)
+
+                # connect dialogue with previous dialogue
+                transcription.add_edge(e_dialogue, _s_dialogue)
+
+                # update previous dialogue start/end time
+                s_dialogue, e_dialogue = _s_dialogue, _e_dialogue
+
+        # connect previous dialogue line with scene end time
+        transcription.add_edge(e_dialogue, e_scene)
+
+        return transcription
+
+    def transcript_aligned(self, url=None, episode=None, **kwargs):
+        path = resource_filename(self.__class__.__name__, url)
+        return CTMParser().get_transcription(path)
+
 
 from ._version import get_versions
 __version__ = get_versions()['version']

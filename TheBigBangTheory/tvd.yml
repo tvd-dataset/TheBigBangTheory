@@ -87,7 +87,66 @@ resources:
             - {season: 1, episode: 9, url: "data/outline/TheBigBangTheory.Season01.Episode09.txt"}
             - {season: 1, episode: 10, url: "data/outline/TheBigBangTheory.Season01.Episode10.txt"}
 
-    outline_raw:
+    transcript:
+
+        description: >
+            Manual transcription of dialogues with speaker name + scene location
+
+        source: |
+            @misc{bigbangtrans,
+                title = {{big bang theory transcripts}},
+                howpublished = \url{http://bigbangtrans.wordpress.com/}
+            }
+
+        type: transcription
+
+        url:
+            - {season: 1, episode: 1, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode01.txt.gz'}
+            - {season: 1, episode: 2, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode02.txt.gz'}
+            - {season: 1, episode: 3, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode03.txt.gz'}
+            - {season: 1, episode: 4, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode04.txt.gz'}
+            - {season: 1, episode: 5, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode05.txt.gz'}
+            - {season: 1, episode: 6, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode06.txt.gz'}
+            - {season: 1, episode: 7, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode07.txt.gz'}
+            - {season: 1, episode: 8, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode08.txt.gz'}
+            - {season: 1, episode: 9, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode09.txt.gz'}
+            - {season: 1, episode: 10, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode10.txt.gz'}
+            - {season: 1, episode: 11, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode11.txt.gz'}
+            - {season: 1, episode: 12, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode12.txt.gz'}
+            - {season: 1, episode: 13, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode13.txt.gz'}
+            - {season: 1, episode: 14, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode14.txt.gz'}
+            - {season: 1, episode: 15, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode15.txt.gz'}
+            - {season: 1, episode: 16, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode16.txt.gz'}
+            - {season: 1, episode: 17, url: 'data/transcript/raw/TheBigBangTheory.Season01.Episode17.txt.gz'}
+
+    transcript_aligned:
+
+        description: >
+            Forced alignment of manual transcription.
+
+        type: transcription
+
+        url:
+            - {season: 1, episode: 1, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode01.ctm.gz'}
+            - {season: 1, episode: 2, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode02.ctm.gz'}
+            - {season: 1, episode: 3, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode03.ctm.gz'}
+            - {season: 1, episode: 4, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode04.ctm.gz'}
+            - {season: 1, episode: 5, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode05.ctm.gz'}
+            - {season: 1, episode: 6, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode06.ctm.gz'}
+            - {season: 1, episode: 7, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode07.ctm.gz'}
+            - {season: 1, episode: 8, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode08.ctm.gz'}
+            - {season: 1, episode: 9, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode09.ctm.gz'}
+            - {season: 1, episode: 10, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode10.ctm.gz'}
+            - {season: 1, episode: 11, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode11.ctm.gz'}
+            - {season: 1, episode: 12, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode12.ctm.gz'}
+            - {season: 1, episode: 13, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode13.ctm.gz'}
+            - {season: 1, episode: 14, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode14.ctm.gz'}
+            - {season: 1, episode: 15, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode15.ctm.gz'}
+            - {season: 1, episode: 16, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode16.ctm.gz'}
+            - {season: 1, episode: 17, url: 'data/transcript/ctm/TheBigBangTheory.Season01.Episode17.ctm.gz'}
+
+
+    outline_www:
 
         description: >
             Raw episode outline (including scene location and short event description)
@@ -173,7 +232,7 @@ resources:
             - {season: 4, episode: 7, url: "http://wiki.the-big-bang-theory.com/wiki/0407"}
             - {season: 4, episode: 9, url: "http://wiki.the-big-bang-theory.com/wiki/0409"}
 
-    manual_transcript_raw:
+    transcript_www:
 
         description: >
             Manual transcription of dialogues with speaker name.
@@ -335,3 +394,4 @@ resources:
             - {season: 7, episode: 12, url: "http://bigbangtrans.wordpress.com/series-7-episode-12-the-hesitation-ramification/"}
             - {season: 7, episode: 13, url: "http://bigbangtrans.wordpress.com/series-7-episode-13-the-occupation-recalibration/"}
             - {season: 7, episode: 14, url: "http://bigbangtrans.wordpress.com/series-7-episode-14-the-convention-conundrum/"}
+

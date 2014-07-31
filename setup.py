@@ -41,11 +41,12 @@ AUTHOR_NAME = 'Hervé Bredin'
 AUTHOR_EMAIL = 'bredin@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.6'
+REQUIRES_TVD = 'tvd >= 0.7.4'
 
 # Additional package dependency
 REQUIRES_OTHER = [
-    'beautifulsoup4>=4.3.2',
+    'beautifulsoup4 >= 4.3.2',
+    'pyannote.parser >= 0.0.2'
 ]
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
@@ -78,6 +79,8 @@ setup(
             'tvd.yml',
             'data/speaker/*',
             'data/outline/*',
+            'data/transcript/raw/*',
+            'data/transcript/ctm/*',
         ],
     },
     include_package_data=True,
