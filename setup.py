@@ -41,7 +41,7 @@ AUTHOR_NAME = 'Hervé Bredin'
 AUTHOR_EMAIL = 'bredin@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.7.4'
+REQUIRES_TVD = 'tvd >= 0.8'
 
 # Additional package dependency
 REQUIRES_OTHER = [
