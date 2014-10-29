@@ -1,3 +1,7 @@
+### Version 0.9 (2014-10-29)
+
+  - setup: switch to tvd 0.8
+
 ### Version 0.8 (2014-07-31)
 
   - feat: add 'transcript' and 'transcript_aligned'
