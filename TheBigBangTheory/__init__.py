@@ -35,7 +35,7 @@ from tvd import T, TStart, TEnd, Transcription
 from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
-from pyannote.parser.ctm import CTMParser, IterLinesMixin
+from pyannote.parser.transcription.ctm import CTMParser, IterLinesMixin
 
 
 class TheBigBangTheory(Plugin, IterLinesMixin):
