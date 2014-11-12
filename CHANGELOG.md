@@ -1,3 +1,7 @@
+### Version 0.9.1 (2014-11-12)
+
+  - hotfix: use pyannote.parser >= 0.2.1
+
 ### Version 0.9 (2014-10-29)
 
   - setup: switch to tvd 0.8
