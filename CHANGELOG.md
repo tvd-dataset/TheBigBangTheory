@@ -1,3 +1,7 @@
+### Version 0.9.2 (2014-11-14)
+
+  - hotfix: support for new CTMParser API
+
 ### Version 0.9.1 (2014-11-12)
 
   - hotfix: use pyannote.parser >= 0.2.1
