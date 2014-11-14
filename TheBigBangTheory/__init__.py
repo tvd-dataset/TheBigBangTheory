@@ -538,7 +538,7 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
 
     def transcript_aligned(self, url=None, episode=None, **kwargs):
         path = resource_filename(self.__class__.__name__, url)
-        return CTMParser().get_transcription(path)
+        return CTMParser().read(path)()
 
 
 from ._version import get_versions
