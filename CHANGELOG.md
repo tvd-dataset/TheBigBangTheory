@@ -1,3 +1,8 @@
+### Version 0.10 (2015-10-27)
+
+  - feat: Python 3 support
+  - feat: test suite
+
 ### Version 0.9.2 (2014-11-14)
 
   - hotfix: support for new CTMParser API
