@@ -27,9 +27,13 @@
 # SOFTWARE.
 #
 
+from __future__ import unicode_literals
+from __future__ import print_function
+
 
 import re
-import HTMLParser
+import six
+from six.moves import html_parser
 from pkg_resources import resource_filename
 from tvd import T, TStart, TEnd, Transcription
 from tvd import Segment, Annotation
@@ -83,7 +87,7 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
         G : Transcription
         """
 
-        h = HTMLParser.HTMLParser()
+        h = html_parser.HTMLParser()
         r = self.download_as_utf8(url)
 
         r = re.sub('<script[^<]+</script>', '', r)
@@ -336,7 +340,7 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
         }
 
         speaker_mapping = {
-            old: new for new, olds in SPEAKER_MAPPING.iteritems() for old in olds
+            old: new for new, olds in six.iteritems(SPEAKER_MAPPING) for old in olds
         }
 
         # download webpage and parse it with BeautifulSoup
@@ -380,7 +384,7 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
                 # u'(Time shift)'
 
                 if debug:
-                    print "SKIPPING: %s" % repr(text)
+                    print("SKIPPING: %s" % repr(text))
 
                 continue
 
