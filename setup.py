@@ -43,12 +43,12 @@ AUTHOR_NAME = 'Hervé Bredin'
 AUTHOR_EMAIL = 'bredin@limsi.fr'
 
 # TVD compatibility version
-REQUIRES_TVD = 'tvd >= 0.8'
+REQUIRES_TVD = 'tvd >= 0.9'
 
 # Additional package dependency
 REQUIRES_OTHER = [
     'beautifulsoup4 >= 4.3.2',
-    'pyannote.parser >= 0.2.3',
+    'pyannote.parser >= 0.4',
 ]
 
 # --- DO NOT MODIFY ANYTHING AFTER THIS LINE ---
