@@ -1,4 +1,4 @@
-### Version 0.10 (2015-10-27)
+### Version 0.10.1 (2015-10-28)
 
   - feat: Python 3 support
   - feat: test suite
