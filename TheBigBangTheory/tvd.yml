@@ -31,14 +31,14 @@ name: "The Big Bang Theory"
 language: "en"
 
 # number of episodes per season
-episodes: [17, 23, 23, 24, 24]
+episodes: [17, 23, 23, 24, 24, 24, 24, 24]
 
 resources:
 
     speaker:
 
         description: >
-            Manual annotation of speech turns 
+            Manual annotation of speech turns
             (including 5 main characters, a 6th "other" class)
 
         type: annotation
@@ -268,7 +268,7 @@ resources:
             - {season: 2, episode: 3, url: "http://bigbangtrans.wordpress.com/series-2-episode-03-the-barbarian-sublimation/"}
             - {season: 2, episode: 4, url: "http://bigbangtrans.wordpress.com/series-2-episode-04-the-griffin-equivalency/"}
             - {season: 2, episode: 5, url: "http://bigbangtrans.wordpress.com/series-2-episode-5-the-euclid-alternative/"}
-            - {season: 2, episode: 6, url: "http://bigbangtrans.wordpress.com/series-2-episode-06-the-cooper-nowitzki-theorem/"}
+            - {season: 2, episode: 6, url: "http://bigbangtrans.wordpress.com/series-2-episode-06-the-cooper-nowitzki-theorem-2/"}
             - {season: 2, episode: 7, url: "http://bigbangtrans.wordpress.com/series-2-episode-07-the-panty-pinata-polarization/"}
             - {season: 2, episode: 8, url: "http://bigbangtrans.wordpress.com/series-1-episode-08-the-lizard-spock-expansion/"}
             - {season: 2, episode: 9, url: "http://bigbangtrans.wordpress.com/series-2-episode-09-the-white-asparagus-triangulation/"}
@@ -276,9 +276,9 @@ resources:
             - {season: 2, episode: 11, url: "http://bigbangtrans.wordpress.com/series-2-episode-11-the-bath-item-gift-hypothesis/"}
             - {season: 2, episode: 12, url: "http://bigbangtrans.wordpress.com/series-2-episode-12-the-killer-robot-instability/"}
             - {season: 2, episode: 13, url: "http://bigbangtrans.wordpress.com/series-2-episode-13-the-friendship-algorithm/"}
-            - {season: 2, episode: 14, url: "http://bigbangtrans.wordpress.com/series-2-episode-14-the-financial-permeability/"}
+            - {season: 2, episode: 14, url: "http://bigbangtrans.wordpress.com/series-2-episode-14-the-financial-permeability-2/"}
             - {season: 2, episode: 15, url: "http://bigbangtrans.wordpress.com/series-2-episode-15-the-maternal-capacitance/"}
-            - {season: 2, episode: 16, url: "http://bigbangtrans.wordpress.com/series-2-episode-16-the-cushion-saturation/"}
+            - {season: 2, episode: 16, url: "http://bigbangtrans.wordpress.com/series-2-episode-16-the-cushion-saturation-3/"}
             - {season: 2, episode: 17, url: "http://bigbangtrans.wordpress.com/series-2-episode-17-the-terminator-decoupling/"}
             - {season: 2, episode: 18, url: "http://bigbangtrans.wordpress.com/series-2-episode-18-the-work-song-nanocluster/"}
             - {season: 2, episode: 19, url: "http://bigbangtrans.wordpress.com/series-2-episode-19-the-dead-hooker-juxtaposition/"}
@@ -370,6 +370,7 @@ resources:
             - {season: 6, episode: 11, url: "http://bigbangtrans.wordpress.com/series-6-episode-11-the-santa-simulation/"}
             - {season: 6, episode: 12, url: "http://bigbangtrans.wordpress.com/series-6-episode-12-the-egg-salad-equivalency/"}
             - {season: 6, episode: 13, url: "http://bigbangtrans.wordpress.com/series-6-episode-13-the-bakersfield-expedition/"}
+            - {season: 6, episode: 14, url: "http://bigbangtrans.wordpress.com/series-6-episode-14-the-cooperkripke-inversion/"}
             - {season: 6, episode: 15, url: "http://bigbangtrans.wordpress.com/series-6-episode-15-the-spoiler-alert-segmentation/"}
             - {season: 6, episode: 16, url: "http://bigbangtrans.wordpress.com/series-6-episode-16-the-tangible-affection-proof/"}
             - {season: 6, episode: 17, url: "http://bigbangtrans.wordpress.com/series-6-episode-17-the-monster-isolation/"}
@@ -394,4 +395,45 @@ resources:
             - {season: 7, episode: 12, url: "http://bigbangtrans.wordpress.com/series-7-episode-12-the-hesitation-ramification/"}
             - {season: 7, episode: 13, url: "http://bigbangtrans.wordpress.com/series-7-episode-13-the-occupation-recalibration/"}
             - {season: 7, episode: 14, url: "http://bigbangtrans.wordpress.com/series-7-episode-14-the-convention-conundrum/"}
-
+            - {season: 7, episode: 15, url: "http://bigbangtrans.wordpress.com/series-7-episode-15-the-locomotive-manipulation/"}
+            - {season: 7, episode: 16, url: "http://bigbangtrans.wordpress.com/series-7-episode-16-the-table-polarisation/"}
+            - {season: 7, episode: 17, url: "http://bigbangtrans.wordpress.com/series-7-episode-17-the-friendship-turbulence/"}
+            - {season: 7, episode: 18, url: "http://bigbangtrans.wordpress.com/series-7-episode-18-the-mommy-observation/"}
+            - {season: 7, episode: 19, url: "http://bigbangtrans.wordpress.com/series-7-episode-19-the-indecision-amalgamation/"}
+            - {season: 7, episode: 20, url: "http://bigbangtrans.wordpress.com/series-7-episode-20-the-relationship-diremption/"}
+            - {season: 7, episode: 21, url: "http://bigbangtrans.wordpress.com/series-7-episode-21-the-anything-can-happen-recurrence/"}
+            - {season: 7, episode: 22, url: "http://bigbangtrans.wordpress.com/series-7-episode-22-the-proton-transmogrification/"}
+            - {season: 7, episode: 23, url: "http://bigbangtrans.wordpress.com/series-7-episode-23-the-gorilla-dissolution/"}
+            - {season: 7, episode: 24, url: "http://bigbangtrans.wordpress.com/series-7-episode-24-the-status-quo-combustion/"}
+            - {season: 8, episode: 1, url: "http://bigbangtrans.wordpress.com/series-8-episode-01-the-locomotion-interruption/"}
+            - {season: 8, episode: 2, url: "http://bigbangtrans.wordpress.com/series-8-episode-02-the-junior-professor-solution/"}
+            - {season: 8, episode: 3, url: "http://bigbangtrans.wordpress.com/series-8-episode-03-the-first-pitch-insufficiency/"}
+            - {season: 8, episode: 4, url: "http://bigbangtrans.wordpress.com/series-8-episode-04-the-hook-up-reverbration/"}
+            - {season: 8, episode: 5, url: "http://bigbangtrans.wordpress.com/series-7-episode-05-the-focus-attenuation/"}
+            - {season: 8, episode: 6, url: "http://bigbangtrans.wordpress.com/series-8-episode-06-the-expedition-approximation/"}
+            - {season: 8, episode: 7, url: "http://bigbangtrans.wordpress.com/series-8-episode-07-the-misinterpretation-agitation/"}
+            - {season: 8, episode: 8, url: "http://bigbangtrans.wordpress.com/series-8-episode-08-the-prom-equivalency/"}
+            - {season: 8, episode: 9, url: "http://bigbangtrans.wordpress.com/series-8-episode-09-the-septum-deviation/"}
+            - {season: 8, episode: 10, url: "http://bigbangtrans.wordpress.com/series-8-episode-10-the-champagne-reflection/"}
+            - {season: 8, episode: 11, url: "http://bigbangtrans.wordpress.com/series-8-episode-11-the-clean-room-infiltration/"}
+            - {season: 8, episode: 12, url: "http://bigbangtrans.wordpress.com/series-8-episode-12-the-space-probe-disintegration/"}
+            - {season: 8, episode: 13, url: "http://bigbangtrans.wordpress.com/series-8-episode-13-the-anxiety-optimisation/"}
+            - {season: 8, episode: 14, url: "http://bigbangtrans.wordpress.com/series-8-episode-14-the-troll-manifestation/"}
+            - {season: 8, episode: 15, url: "http://bigbangtrans.wordpress.com/series-8-episode-15-the-comic-book-store-regeneration/"}
+            - {season: 8, episode: 16, url: "http://bigbangtrans.wordpress.com/series-8-episode-16-the-intimacy-acceleration/"}
+            - {season: 8, episode: 17, url: "http://bigbangtrans.wordpress.com/series-8-episode-17-the-colonization-application/"}
+            - {season: 8, episode: 18, url: "http://bigbangtrans.wordpress.com/series-8-episode-18-the-leftover-thermalization/"}
+            - {season: 8, episode: 19, url: "http://bigbangtrans.wordpress.com/series-8-episode-19-the-skywalker-incursion/"}
+            - {season: 8, episode: 20, url: "http://bigbangtrans.wordpress.com/series-8-episode-20-the-fortification-implementation/"}
+            - {season: 8, episode: 21, url: "http://bigbangtrans.wordpress.com/series-8-episode-21-the-communication-deterioration/"}
+            - {season: 8, episode: 22, url: "http://bigbangtrans.wordpress.com/series-8-episode-22-the-graduation-transmission/"}
+            - {season: 8, episode: 23, url: "http://bigbangtrans.wordpress.com/series-8-episode-23-the-maternal-combustion/"}
+            - {season: 8, episode: 24, url: "http://bigbangtrans.wordpress.com/series-8-episode-24-the-commitment-determination/"}
+            - {season: 9, episode: 1, url: "http://bigbangtrans.wordpress.com/series-9-episode-01-the-matrimonial-momentum/"}
+            - {season: 9, episode: 2, url: "http://bigbangtrans.wordpress.com/series-9-episode-02-the-separation-oscillation/"}
+            - {season: 9, episode: 3, url: "http://bigbangtrans.wordpress.com/series-9-episode-03-the-batchelor-party-corrosion/"}
+            - {season: 9, episode: 4, url: "http://bigbangtrans.wordpress.com/series-9-episode-04-the-2003-approximation/"}
+            - {season: 9, episode: 5, url: "http://bigbangtrans.wordpress.com/series-9-episode-05-the-perspiration-implementation/"}
+            - {season: 9, episode: 6, url: "http://bigbangtrans.wordpress.com/series-9-episode-06-the-helium-insufficiency/"}
+            - {season: 9, episode: 7, url: "http://bigbangtrans.wordpress.com/series-9-episode-07-the-spock-resonance/"}
+            - {season: 9, episode: 8, url: "http://bigbangtrans.wordpress.com/series-9-episode-08-the-mystery-date-observation/"}
