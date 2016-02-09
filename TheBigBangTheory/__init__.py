@@ -40,6 +40,7 @@ from tvd import Segment, Annotation
 from tvd import Plugin
 from bs4 import BeautifulSoup
 from pyannote.parser.transcription.ctm import CTMParser, IterLinesMixin
+import warnings
 
 
 class TheBigBangTheory(Plugin, IterLinesMixin):
@@ -449,13 +450,14 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
                 directions = u' '.join(speaker_directions + speech_directions)
 
                 # debug
-                # if speaker not in speaker_mapping:
-                #     warnings.warn('no mapping for speaker "%s"' % speaker)
+                if speaker not in speaker_mapping:
+                    warnings.warn('no mapping for speaker "%s"' % speaker)
 
                 # build annotation data
                 # (with directions only if they exist)
                 data = {
-                    'speaker': speaker_mapping.get(speaker, 'unknown (%s)' % speaker),
+                    'speaker': speaker_mapping.get(
+                        speaker, 'unknown_%s' % '_'.join(speaker.split())),
                     'speech': speech,
                 }
                 if directions:
