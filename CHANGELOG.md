@@ -1,3 +1,8 @@
+
+### Version 0.10.3 (2016-02-09)
+
+  - feat: transcripts for seasons 7 and 8
+
 ### Version 0.10.2 (2015-10-29)
 
   - feat: Python 3 support
