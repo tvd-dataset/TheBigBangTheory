@@ -47,6 +47,23 @@ class TheBigBangTheory(Plugin, IterLinesMixin):
 
     def speaker(self, url=None, episode=None, **kwargs):
 
+        # absolute path to resource file
+        path = resource_filename(self.__class__.__name__, url)
+
+        annotation = Annotation()
+        with open(path, 'r') as fp:
+            for line in fp:
+                tokens = line.strip().split()
+                start_time = float(tokens[0])
+                duration = float(tokens[1])
+                segment = Segment(start_time, start_time + duration)
+                speaker = tokens[2]
+                annotation[segment, speaker] = speaker
+
+        return annotation
+
+    def speaker_manual(self, url=None, episode=None, **kwargs):
+
         # path to 'speaker' package resource
         path = resource_filename(self.__class__.__name__, url)
 
