@@ -35,7 +35,7 @@ episodes: [17, 23, 23, 24, 24, 24, 24, 24]
 
 resources:
 
-    speaker:
+    speaker_manual:
 
         description: >
             Manual annotation of speech turns
@@ -86,6 +86,55 @@ resources:
             - {season: 1, episode: 8, url: "data/outline/TheBigBangTheory.Season01.Episode08.txt"}
             - {season: 1, episode: 9, url: "data/outline/TheBigBangTheory.Season01.Episode09.txt"}
             - {season: 1, episode: 10, url: "data/outline/TheBigBangTheory.Season01.Episode10.txt"}
+
+    speaker:
+
+        type: annotation
+
+        description: >
+            Who speaks when (via automatic alignment of manual transcripts)
+
+        url:
+            - {season: 1, episode: 1, url: 'data/transcript/TheBigBangTheory.Season01.Episode01.out'}
+            - {season: 1, episode: 2, url: 'data/transcript/TheBigBangTheory.Season01.Episode02.out'}
+            - {season: 1, episode: 3, url: 'data/transcript/TheBigBangTheory.Season01.Episode03.out'}
+            - {season: 1, episode: 4, url: 'data/transcript/TheBigBangTheory.Season01.Episode04.out'}
+            - {season: 1, episode: 5, url: 'data/transcript/TheBigBangTheory.Season01.Episode05.out'}
+            - {season: 1, episode: 6, url: 'data/transcript/TheBigBangTheory.Season01.Episode06.out'}
+            - {season: 1, episode: 7, url: 'data/transcript/TheBigBangTheory.Season01.Episode07.out'}
+            - {season: 1, episode: 8, url: 'data/transcript/TheBigBangTheory.Season01.Episode08.out'}
+            - {season: 1, episode: 9, url: 'data/transcript/TheBigBangTheory.Season01.Episode09.out'}
+            - {season: 1, episode: 10, url: 'data/transcript/TheBigBangTheory.Season01.Episode10.out'}
+            - {season: 1, episode: 11, url: 'data/transcript/TheBigBangTheory.Season01.Episode11.out'}
+            - {season: 1, episode: 12, url: 'data/transcript/TheBigBangTheory.Season01.Episode12.out'}
+            - {season: 1, episode: 13, url: 'data/transcript/TheBigBangTheory.Season01.Episode13.out'}
+            - {season: 1, episode: 14, url: 'data/transcript/TheBigBangTheory.Season01.Episode14.out'}
+            - {season: 1, episode: 15, url: 'data/transcript/TheBigBangTheory.Season01.Episode15.out'}
+            - {season: 1, episode: 16, url: 'data/transcript/TheBigBangTheory.Season01.Episode16.out'}
+            - {season: 1, episode: 17, url: 'data/transcript/TheBigBangTheory.Season01.Episode17.out'}
+            - {season: 2, episode: 1, url: 'data/transcript/TheBigBangTheory.Season02.Episode01.out'}
+            - {season: 2, episode: 2, url: 'data/transcript/TheBigBangTheory.Season02.Episode02.out'}
+            - {season: 2, episode: 3, url: 'data/transcript/TheBigBangTheory.Season02.Episode03.out'}
+            - {season: 2, episode: 4, url: 'data/transcript/TheBigBangTheory.Season02.Episode04.out'}
+            - {season: 2, episode: 5, url: 'data/transcript/TheBigBangTheory.Season02.Episode05.out'}
+            - {season: 2, episode: 6, url: 'data/transcript/TheBigBangTheory.Season02.Episode06.out'}
+            - {season: 2, episode: 7, url: 'data/transcript/TheBigBangTheory.Season02.Episode07.out'}
+            - {season: 2, episode: 8, url: 'data/transcript/TheBigBangTheory.Season02.Episode08.out'}
+            - {season: 2, episode: 9, url: 'data/transcript/TheBigBangTheory.Season02.Episode09.out'}
+            - {season: 2, episode: 10, url: 'data/transcript/TheBigBangTheory.Season02.Episode10.out'}
+            - {season: 2, episode: 11, url: 'data/transcript/TheBigBangTheory.Season02.Episode11.out'}
+            - {season: 2, episode: 12, url: 'data/transcript/TheBigBangTheory.Season02.Episode12.out'}
+            - {season: 2, episode: 13, url: 'data/transcript/TheBigBangTheory.Season02.Episode13.out'}
+            - {season: 2, episode: 14, url: 'data/transcript/TheBigBangTheory.Season02.Episode14.out'}
+            - {season: 2, episode: 15, url: 'data/transcript/TheBigBangTheory.Season02.Episode15.out'}
+            - {season: 2, episode: 16, url: 'data/transcript/TheBigBangTheory.Season02.Episode16.out'}
+            - {season: 2, episode: 17, url: 'data/transcript/TheBigBangTheory.Season02.Episode17.out'}
+            - {season: 2, episode: 18, url: 'data/transcript/TheBigBangTheory.Season02.Episode18.out'}
+            - {season: 2, episode: 19, url: 'data/transcript/TheBigBangTheory.Season02.Episode19.out'}
+            - {season: 2, episode: 20, url: 'data/transcript/TheBigBangTheory.Season02.Episode20.out'}
+            - {season: 2, episode: 21, url: 'data/transcript/TheBigBangTheory.Season02.Episode21.out'}
+            - {season: 2, episode: 22, url: 'data/transcript/TheBigBangTheory.Season02.Episode22.out'}
+            - {season: 2, episode: 23, url: 'data/transcript/TheBigBangTheory.Season02.Episode23.out'}
 
     transcript:
 
