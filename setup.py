@@ -3,7 +3,7 @@
 
 # The MIT License (MIT)
 #
-# Copyright (c) 2013-2015 CNRS
+# Copyright (c) 2013-2016 CNRS
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -81,7 +81,9 @@ setup(
             'tvd.yml',
             'data/speaker/*',
             'data/outline/*',
-            'data/transcript/*',
+            'data/transcript/*.out',
+            'data/transcript/ctm/*.gz',
+            'data/transcript/raw/*.gz',
         ],
     },
     include_package_data=True,

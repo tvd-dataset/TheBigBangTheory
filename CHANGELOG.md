@@ -1,4 +1,4 @@
-### Version 0.11 (2016.03-17)
+### Version 0.11.1 (2016-03-29)
 
   - feat: "who speaks when" for seasons 1 and 2
   - BREAKING: "speaker" renamed to "speaker_manual"
